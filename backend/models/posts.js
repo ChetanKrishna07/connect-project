@@ -4,15 +4,14 @@ const imageSchema = new mongoose.Schema({
     img: {
         data: Buffer,
         contentType: String
-
     }
 })
 
-const post = new mongoose.Schema({
-    uid: Number,
-    name: String,
-    img: imageSchema,
+const postSchema = new mongoose.Schema({
+    uid: String,
+    title: String,
+    image: imageSchema,
     content: String
 })
 
-module.exports = new mongoose.model('Image', imageSchema)
+module.exports = new mongoose.model('Post', postSchema)
