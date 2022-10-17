@@ -46,6 +46,17 @@ app.get('/userposts', async (req, res) => {
     }
 })
 
+app.get('/post', async (req, res) => {
+    console.log('get request at /post');
+    let pid = req.body.pid
+    try {
+        let post = await Post.find({_id: pid})
+        res.send(post)
+    } catch(err) {
+        console.log(err);
+    }
+})
+
 app.listen(port, err => {
     if (err)
         throw err
