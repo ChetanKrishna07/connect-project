@@ -1,0 +1,275 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(236, 241, 245);
+}
+
+.mainContainer{
+    width: 85%;
+    margin: auto;
+}
+
+.profile{
+    background-color: rgb(255, 255, 255);
+
+    border-radius: 10px;
+    position: relative;
+}
+
+.coverPic{
+    max-width: 100%;
+    height: 80%;
+    border-radius: 10px 10px 0 0; 
+}
+
+.profilePic{
+    width: 150px;
+    height: 150px;
+    border: 3px solid white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: -80px 0 0 30px;
+}
+
+.NC{
+    width: 15%;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    bottom: 20px;
+    margin-bottom: 0;
+}
+.NC p{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+#name{
+    color: #333;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#country{
+    font-size: 12px;
+}
+
+.profile ul{
+    display: inline-block;
+    position: relative;
+    bottom: 30px;
+    margin-bottom: 0;
+}
+
+.profile ul li{
+    display: inline;
+    padding: 0 10px 0 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile a{
+    text-decoration: none;
+    color: rgb(232, 97, 63);
+}
+
+.stats {
+    width: 30%;
+}
+
+.stats{
+    position: relative;
+    bottom: 5px;
+    left: 30px;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+
+
+.stats table td{
+    padding-left: 20px;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+#nums{
+    text-align: center;
+    color: rgb(232, 97, 63);
+    
+}
+
+.personalInfo{
+    /* width: 30%; */
+    background-color: white;
+    border-radius: 10px;
+    /* display: inline-block; */
+    grid-row: 1 / 6;
+    /* background: #fff none repeat scroll 0 0; */
+}
+
+.personalInfo h3{
+    border-left: 3px solid rgb(232, 97, 63);
+    padding: 0 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: medium;
+    /* margin-top: 40px;
+    position: relative;
+    top: 10px; */
+}
+
+.personalInfo hr{
+    width: 85%;
+    margin: auto;
+}
+
+.personalInfo h4{
+    margin-left: 10%;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+}
+
+.personalInfo p{
+    margin-left: 10%;
+    margin-top: -10px;
+    font-weight: lighter;
+    font-family: 'Poppins', sans-serif;
+    font-size: small;
+    color: rgb(149, 154, 181);
+}
+
+.generalInfo,
+.friends,
+.photos{
+    /* width: 60%; */
+    background-color: white;
+    border-radius: 10px;
+    /* display: inline-block; */
+}
+
+.grid-Info{
+    display: grid;
+    grid-template-columns: 32% 66%;
+    gap: 2%;
+}
+
+.generalInfo h3,
+.friends h3,
+.photos h3{
+    border-left: 3px solid rgb(232, 97, 63);
+    padding: 0 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: medium;
+}
+
+.generalInfo hr,
+.friends hr,
+.photos hr{
+    width: 93%;
+    margin: auto;
+}
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-container>div {
+    width: 40%;
+    margin-left: 5%;
+}
+
+.flex-container h4{
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+}
+
+.flex-container p{
+    margin-top: -10px;
+    font-weight: lighter;
+    font-family: 'Poppins', sans-serif;
+    font-size: small;
+    color: rgb(149, 154, 181);
+}
+
+.friends h3,
+.photos h3{
+    display: inline-block;
+}
+
+.friends a,
+.photos a{
+    float: right;
+    margin: 20px;
+    text-decoration: none;
+    font-size: smaller;
+    color: rgb(232, 97, 63);
+    font-family: 'Poppins', sans-serif;
+}
+
+.flex-container-frnd {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.frnd{
+    background-color: rgb(242, 247, 251);
+    margin: 20px 0 20px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+div.frnd img,
+.photos img{
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+}
+
+div.frnd p{
+    margin-top: 2px;
+    font-size: small;
+}
+
+.photos img{
+    margin: 20px 0 20px 20px;
+}
+
+@media screen and (max-width: 1100px) {
+    .stats{
+        display: block;
+        /* text-align: center; */
+        margin: auto;
+    }
+}     
+
+@media screen and (max-width: 930px) {
+    .NC, .profile ul{
+        width: 100%;
+        text-align: center;
+    }
+
+    .stats{
+        width: 300px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .grid-Info {
+            display: grid;
+            grid-template-columns: 100%;
+            gap: 2%;
+        }
+}
+
+
+
+
+
+
