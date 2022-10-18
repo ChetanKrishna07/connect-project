@@ -26,7 +26,7 @@ input[type="search"]{
 
 .frndsDetails{
     background-color: white;
-    padding: 20px 0 10px 20px;
+    padding: 20px;
     border-radius: 10px;
 }
 
@@ -36,6 +36,8 @@ input[type="search"]{
     border-radius: 5px;
     display: inline-block;
     margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
 }
 
 .eachFrnd .frndCover{
@@ -69,4 +71,13 @@ input[type="search"]{
     font-family: 'Poppins', sans-serif;
     color: rgb(149, 154, 181);
     font-size: smaller;
+}
+
+@media screen and (max-width: 1100px) {
+    .frndsDetails{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
 }
