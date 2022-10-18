@@ -25,7 +25,7 @@
     transition: transform .5s;
 }
 
-input {
+#inputPhoto{
     display: none;
 }
 

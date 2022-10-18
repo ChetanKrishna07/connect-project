@@ -7,10 +7,26 @@
     <title>Profile</title>
     <link rel="stylesheet" href="Profile.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="profileData.css">
+    <link rel="stylesheet" href="profileData.css"> 
+    <link rel="stylesheet" href="newNav.css">
 </head>
 <body>
-
+    
+    <nav>
+        <ul id="logo-name" class="logo-name">
+            <li><span>CONNECT</span></li>
+            <img id="logo" src="images/logo.jpg" alt="logo">
+        </ul>
+        <ul class="link-match" id="link-match">
+            <li><input type="search" name="search-box-frnd" id="search-box-frnd" placeholder="Search Users"></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="ProfilePage.html">Profile</a></li>
+            <li><a href="messages.html">Messages</a></li>
+        </ul>
+        <ul class="menu">
+            <li><a href="javascript:void(0);" id="menu" onclick="open_close()">☰</a></li>
+        </ul>
+    </nav>
     <div class="mainContainer">
         <div class="profile">
             <img class="coverPic" src="images/coverPhoto.jpg" alt="coverpic">
@@ -129,6 +145,19 @@
         </div>
         
     </div>
+    <script>
+        function open_close(){
+            var x = document.getElementById("link-match");
+            var y = document.getElementById("menu");
+            if (x.className === "link-match") {
+                x.className += " responsive";
+                y.innerHTML = "&#10006";
+            } else {
+                x.className = "link-match";
+                y.innerHTML = "☰";
+            }
+        }
+    </script>
     
 </body>
 </html>
