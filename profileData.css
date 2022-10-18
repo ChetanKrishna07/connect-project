@@ -9,11 +9,12 @@ body {
 .mainContainer {
     width: 85%;
     margin: auto;
+    position: relative;
+    top: 70px;
 }
 
 .profile {
     background-color: rgb(255, 255, 255);
-
     border-radius: 10px;
     position: relative;
 }
