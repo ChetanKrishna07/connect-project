@@ -13,7 +13,8 @@
     color: white;
 }
 
-input[type="search"]{
+/* .input[type="search"] */
+#searchFrnd{
     float: right;
     border: 1px solid #dedede;
     border-radius: 5px;
