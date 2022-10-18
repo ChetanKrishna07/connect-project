@@ -1,10 +1,8 @@
 const mongoose = require('mongoose')
 
-const postSchema = new mongoose.Schema({
+const imageSchema = new mongoose.Schema({
     uid: String,
-    title: String,
     image: String,
-    content: String,
     postedAt: {
         type: Date,
         immutable: true,
@@ -12,4 +10,4 @@ const postSchema = new mongoose.Schema({
     }
 })
 
-module.exports = new mongoose.model('Post', postSchema)
+module.exports = new mongoose.model('Image', imageSchema)

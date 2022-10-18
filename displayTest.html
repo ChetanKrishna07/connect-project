@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display Pics</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      async function handleClick() {
+        let headersList = {
+          "Content-Type": "application/json",
+        };
+
+        let body = {
+          pid: "634f3713b0963ed8ca5363e8",
+        };
+
+        let reqOptions = {
+          url: "http://localhost:3000/getpost",
+          method: "POST",
+          headers: headersList,
+          data: body,
+        };
+
+        let response = await axios.request(reqOptions);
+        var img = response.data[0].image;
+        document.getElementById("display").innerHTML = `<img src=${img}>`;
+      }
+    </script>
+    <div id="display"></div>
+    <input type="button" value="get" id="btn" onclick="handleClick()" />
+  </body>
+</html>
