@@ -1,116 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration Form</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <h1 class="text-green text-center font-weight-bold" style="font-size: 40px;">New User Registration</h1>
+  </head>
+  <body>
+    <h1 class="text-green text-center font-weight-bold" style="font-size: 40px">
+      New User Registration
+    </h1>
     <div class="container">
-        <div class="col-lg-5 m-auto d-block">
-            <form action="#" onsubmit="return validate()">
-    
+      <div class="col-lg-5 m-auto d-block">
+        <form>
+          <div class="form-group">
+            <label class="font-weight-regular"> Email </label>
+            <input
+              type="text"
+              name="email"
+              class="form-control"
+              id="emails"
+              autocomplete="off"
+            />
+            <span id="emailids" class="text-danger font-weight-regular"> </span>
+          </div>
 
-                <div class="form-group">
-                    <label class="font-weight-regular"> Email </label>
-                    <input type="text" name="email" class="form-control" id="emails" autocomplete="off"/>
-                    <span id="emailids" class="text-danger font-weight-regular"> </span>
-                </div>
-        
-                <div class="form-group">
-                    <label for="user" class="font-weight-regular"> Username </label>
-                    <input type="text" name="user" class="form-control" id="user" autocomplete="off"/>
-                    <span id="username" class="text-danger font-weight-regular"> </span>
-                </div>
-        
-                <div class="form-group">
-                    <label class="font-weight-regular"> Password </label>
-                    <input type="password" name="pass" class="form-control" id="pass" autocomplete="off"/>
-                    <span id="passwords" class="text-danger font-weight-regular"></span>
-                </div>
-        
-                <div class="form-group">
-                    <label class="font-weight-regular"> Confirm Password </label>
-                    <input type="password" name="conpass" class="form-control" id="conpass" autocomplete="off"/>
-                    <span id="confrmpass" class="text-danger font-weight-regular"></span>
-                </div>
+          <div class="form-group">
+            <label for="user" class="font-weight-regular"> Username </label>
+            <input
+              type="text"
+              name="user"
+              class="form-control"
+              id="user"
+              autocomplete="off"
+            />
+            <span id="username" class="text-danger font-weight-regular"> </span>
+          </div>
 
-                
+          <div class="form-group">
+            <label class="font-weight-regular"> Password </label>
+            <input
+              type="password"
+              name="pass"
+              class="form-control"
+              id="pass"
+              autocomplete="off"
+            />
+            <span id="passwords" class="text-danger font-weight-regular"></span>
+          </div>
 
-                
-                <input type="reset" name="reset" value="Reset" class="btn btn-secondary" autocomplete="off"/>
-                <!-- <button onclick="validate()" class="btn btn-secondary"><a href="next.html" onclick="validate()" style="text-decoration: none; color: white;">Next</a></button> -->
-                <a href="next.html" class="btn btn-secondary" onclick="return validate()" style="text-decoration: none; color: white;">Next</a>
-                &emsp;&emsp;&emsp;Already have an account?
-                <a href="login.html">Login</a>
-            </form>
-        </div>
+          <div class="form-group">
+            <label class="font-weight-regular"> Confirm Password </label>
+            <input
+              type="password"
+              name="conpass"
+              class="form-control"
+              id="conpass"
+              autocomplete="off"
+            />
+            <span
+              id="confrmpass"
+              class="text-danger font-weight-regular"
+            ></span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular">About me </label>
+            <textarea
+              type="textarea"
+              maxlength="250"
+              name="aboutme"
+              class="form-control"
+              id="about"
+              autocomplete="off"
+            ></textarea>
+            <span id="About" class="text-danger font-weight-regular"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular"> Mobile Number </label>
+            <input
+              type="text"
+              name="mobile"
+              class="form-control"
+              id="mobileNumber"
+              autocomplete="off"
+            />
+            <span id="mobileno" class="text-danger font-weight-regular"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular"> Birthday </label>
+            <input
+              type="text"
+              name="Birthday"
+              class="form-control"
+              id="dob"
+              autocomplete="off"
+            />
+            <span id="DOB" class="text-danger font-weight-regular"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular"> Gender </label>
+            <input
+              type="text"
+              name="gender"
+              class="form-control"
+              id="gender"
+              autocomplete="off"
+            />
+            <span id="Gender" class="text-danger font-weight-regular"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular"> Blood Group </label>
+            <input
+              type="text"
+              name="blood-group"
+              class="form-control"
+              id="bg"
+              autocomplete="off"
+            />
+            <span id="Bloodg" class="text-danger font-weight-regular"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular"> Country </label>
+            <input
+              type="text"
+              name="country"
+              class="form-control"
+              id="country"
+              autocomplete="off"
+            />
+            <span id="Country" class="text-danger font-weight-regular"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular">Occupation </label>
+            <input
+              type="text"
+              name="Occupation"
+              class="form-control"
+              id="occ"
+              autocomplete="off"
+            />
+            <span id="occp" class="text-danger font-weight-regular"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular">Hobbies </label>
+            <textarea
+              type="textarea"
+              maxlength="250"
+              name="hobbie"
+              class="form-control"
+              id="hobby"
+              autocomplete="off"
+            ></textarea>
+            <span id="hobbies" class="text-danger font-weight-regular"> </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular">Education </label>
+            <textarea
+              type="textarea"
+              maxlength="50"
+              name="Education"
+              class="form-control"
+              id="edu"
+              autocomplete="off"
+            ></textarea>
+            <span id="education" class="text-danger font-weight-regular">
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular">Work and Experience </label>
+            <textarea
+              type="textarea"
+              maxlength="250"
+              name="WorkExperience"
+              class="form-control"
+              id="work"
+              autocomplete="off"
+            ></textarea>
+            <span id="Experience" class="text-danger font-weight-regular">
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label class="font-weight-regular">Other Interests </label>
+            <textarea
+              type="textarea"
+              maxlength="250"
+              name="interests"
+              class="form-control"
+              id="interest"
+              autocomplete="off"
+            ></textarea>
+            <span id="Interests" class="text-danger font-weight-regular">
+            </span>
+          </div>
+
+          <input
+            type="reset"
+            name="reset"
+            value="Reset"
+            class="btn btn-secondary"
+            autocomplete="off"
+          />
+          <input
+            type="button"
+            onclick="validate()"
+            name="submit"
+            value="Submit"
+            class="btn btn-primary"
+            autocomplete="off"
+          />
+          <!-- 
+                <button onclick="validate()" class="btn btn-secondary">Submit</button> -->
+          <!-- <a href="next.html" class="btn btn-secondary" onclick="return validate()" style="text-decoration: none; color: white;">Next</a> -->
+          &emsp;&emsp;&emsp;Already have an account?
+          <a href="login.html">Login</a>
+        </form>
+      </div>
     </div>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript">
-        function validate() {
-            var user = document.getElementById("user").value;
-            var pass = document.getElementById("pass").value;
-            var confirmpass = document.getElementById("conpass").value;
-            var emails = document.getElementById("emails").value;
-    
-    
-            if (emails == "") {
-                document.getElementById("emailids").innerHTML = " ** Please fill the email id field";
-                return false;
-            }
-            if (emails.indexOf("@") <= 0) {
-                document.getElementById("emailids").innerHTML = " ** Invalid Email";
-                return false;
-            }
-    
-            if (
-                emails.charAt(emails.length - 4) != "." &&
-                emails.charAt(emails.length - 3) != "."
-            ) {
-                document.getElementById("emailids").innerHTML = " ** Invalid Email";
-                return false;
-            }
-    
-            if (user == "") {
-                document.getElementById("username").innerHTML = " ** Please fill the username field";
-                return false;
-            }
-            if (user.length <= 3 || user.length > 20) {
-                document.getElementById("username").innerHTML = " ** Username lenght must be between 3 and 20";
-                return false;
-            }
-            if (!isNaN(user)) {
-                document.getElementById("username").innerHTML = " ** only characters are allowed";
-                return false;
-            }
-    
-            if (pass == "") {
-                document.getElementById("passwords").innerHTML = " ** Please fill the password field";
-                return false;
-            }
-            if (pass.length <= 5 || pass.length > 20) {
-                document.getElementById("passwords").innerHTML = " ** Passwords lenght must be between  5 and 20";
-                return false;
-            }
-    
-            if (pass != confirmpass) {
-                document.getElementById("confrmpass").innerHTML = " ** Password Mismatch";
-                return false;
-            }
-    
-            if (confirmpass == "") {
-                document.getElementById("confrmpass").innerHTML = " ** Please fill the confirmpassword field";
-                return false;
-            }
-    
+      async function addUser() {
+        var uid = document.getElementById("user").value;
+        var password = document.getElementById("pass").value;
+        var email = document.getElementById("emails").value;
+        var about = document.getElementById("about").value;
+        var mobile = document.getElementById("mobileNumber").value;
+        var birthday = document.getElementById("dob").value;
+        var gender = document.getElementById("gender").value;
+        var blood_group = document.getElementById("bg").value;
+        var country = document.getElementById("country").value;
+        var occupation = document.getElementById("occ").value;
+        var hobbies = document.getElementById("hobby").value;
+        var education = document.getElementById("edu").value;
+        var workExp = document.getElementById("work").value;
+        var other = document.getElementById("interest").value;
+
+        let headersList = {
+          "Content-Type": "application/json",
+        };
+
+        let body = {
+          email: email,
+          uid: uid,
+          password: password,
+          about: about,
+          mobile: mobile,
+          birthday: birthday,
+          gender: gender,
+          blood_group: blood_group,
+          country: country,
+          occupation: occupation,
+          hobbies: hobbies,
+          education: education,
+          workExp: workExp,
+          other: other,
+        };
+
+        let reqOptions = {
+          url: "http://localhost:3000/register",
+          method: "POST",
+          headers: headersList,
+          data: body,
+        };
+
+        var register_status = await axios.request(reqOptions);
+        console.log(register_status);
+        if (register_status.data == "Successful") {
+          window.location.href = "../home.html";
+        } else {
+          window.location.href = "./login.html";
         }
-      </script>
-</body>
+      }
+      async function validate() {
+        var user = document.getElementById("user").value;
+        var pass = document.getElementById("pass").value;
+        var confirmpass = document.getElementById("conpass").value;
+        var emails = document.getElementById("emails").value;
+        var about = document.getElementById("about").value;
+        var mobileNumber = document.getElementById("mobileNumber").value;
+
+        var isValid = true;
+
+        if (emails == "") {
+          document.getElementById("emailids").innerHTML =
+            " ** Please fill the email id field";
+          isValid = false;
+        }
+        if (emails.indexOf("@") <= 0) {
+          document.getElementById("emailids").innerHTML = " ** Invalid Email";
+          isValid = false;
+        }
+
+        if (
+          emails.charAt(emails.length - 4) != "." &&
+          emails.charAt(emails.length - 3) != "."
+        ) {
+          document.getElementById("emailids").innerHTML = " ** Invalid Email";
+          isValid = false;
+        }
+
+        if (user == "") {
+          document.getElementById("username").innerHTML =
+            " ** Please fill the username field";
+          isValid = false;
+        }
+        if (user.length <= 3 || user.length > 20) {
+          document.getElementById("username").innerHTML =
+            " ** Username lenght must be between 3 and 20";
+          isValid = false;
+        }
+        if (!isNaN(user)) {
+          document.getElementById("username").innerHTML =
+            " ** only characters are allowed";
+          isValid = false;
+        }
+
+        if (pass == "") {
+          document.getElementById("passwords").innerHTML =
+            " ** Please fill the password field";
+          isValid = false;
+        }
+        if (pass.length <= 5 || pass.length > 20) {
+          document.getElementById("passwords").innerHTML =
+            " ** Passwords lenght must be between  5 and 20";
+          isValid = false;
+        }
+
+        if (pass != confirmpass) {
+          document.getElementById("confrmpass").innerHTML =
+            " ** Password Mismatch";
+          isValid = false;
+        }
+
+        if (confirmpass == "") {
+          document.getElementById("confrmpass").innerHTML =
+            " ** Please fill the confirmpassword field";
+          isValid = false;
+        }
+
+        if (mobileNumber == "") {
+          document.getElementById("mobileno").innerHTML =
+            " ** Please fill the Mobile Number field";
+          isValid = false;
+        }
+        if (isNaN(mobileNumber)) {
+          document.getElementById("mobileno").innerHTML =
+            " ** user must write digits only not characters";
+          isValid = false;
+        }
+        if (mobileNumber.length != 10) {
+          document.getElementById("mobileno").innerHTML =
+            " ** Mobile Number must be 10 digits only";
+          isValid = false;
+        }
+
+        if (gender == "") {
+          document.getElementById("mobileno").innerHTML =
+            " ** Please give the Gender";
+          isValid = false;
+        }
+
+        if (!gender == "Male" || !gender == "Female" || !gender == "other") {
+          document.getElementById("Gender").innerHTML =
+            " ** gender can be Male or Female or other";
+        }
+
+        if (country == "") {
+          document.getElementById("mobileno").innerHTML =
+            " ** Please fill the Country field";
+          isValid = false;
+        }
+        if (isValid) {
+          addUser();
+        }
+      }
+    </script>
+  </body>
 </html>

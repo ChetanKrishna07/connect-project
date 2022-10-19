@@ -141,7 +141,7 @@ app.post('/deleteimage', async (req, res) => {
 app.post('/login', async(req, res) => {
     console.log('POST request at /login');
     let uid = req.body.uid;
-    let pass = req.body.pass;
+    let pass = req.body.password;
     let real_pass = await User.findOne({uid: uid})
     real_pass = real_pass.password;
     if(real_pass != null) {
@@ -175,13 +175,22 @@ app.post('/register', async(req, res) => {
         other: req.body.other,
     }
 
-    await User.create(userObj, (err, item) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.status(200).send("Successful")
-        }
-    })
+    console.log("1");
+
+    let user = await User.findOne({uid: userObj.uid})
+
+    console.log("2");
+    if(user != null) {
+        res.send("Exists")
+    } else {
+        await User.create(userObj, (err, item) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.status(200).send("Successful")
+            }
+        })
+    }
 
 })
 
