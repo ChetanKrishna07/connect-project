@@ -112,17 +112,6 @@
           isValid = false;
         }
 
-        if (pass == "") {
-          document.getElementById("Pass").innerHTML =
-            " ** Please fill the password field";
-          isValid = false;
-        }
-        if (pass.length <= 5 || pass.length > 20) {
-          document.getElementById("Pass").innerHTML =
-            " ** Passwords lenght must be between  5 and 20";
-          isValid = false;
-        }
-
         //   if (pass != confirmpass) {
         //     document.getElementById("confrmpass").innerHTML =
         //       " ** Password does not match the confirm password";
