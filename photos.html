@@ -1,103 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photos</title>
-    <link rel="stylesheet" href="profileData.css">
-    <link rel="stylesheet" href="photos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="newNav.css">
-</head>
-<body>
+    <link rel="stylesheet" href="profileData.css" />
+    <link rel="stylesheet" href="photos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="newNav.css" />
+  </head>
+  <body>
     <nav>
-        <ul id="logo-name" class="logo-name">
-            <li><span>CONNECT</span></li>
-            <img id="logo" src="images/logo.jpg" alt="logo">
-        </ul>
-        <ul class="link-match" id="link-match">
-            <li><input type="search" name="search-box-frnd" id="search-box-frnd" placeholder="Search Users"></li>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="ProfilePage.html">Profile</a></li>
-            <li><a href="messages.html">Messages</a></li>
-        </ul>
-        <ul class="menu">
-            <li><a href="javascript:void(0);" id="menu" onclick="open_close()">☰</a></li>
-        </ul>
+      <ul id="logo-name" class="logo-name">
+        <li><span>CONNECT</span></li>
+        <img id="logo" src="images/logo.jpg" alt="logo" />
+      </ul>
+      <ul class="link-match" id="link-match">
+        <li>
+          <input
+            type="search"
+            name="search-box-frnd"
+            id="search-box-frnd"
+            placeholder="Search Users"
+          />
+        </li>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="ProfilePage.html">Profile</a></li>
+        <li><a href="messages.html">Messages</a></li>
+      </ul>
+      <ul class="menu">
+        <li>
+          <a href="javascript:void(0);" id="menu" onclick="open_close()">☰</a>
+        </li>
+      </ul>
     </nav>
     <div class="mainContainer">
-        <div class="profile">
-            <img class="coverPic" src="images/coverPhoto.jpg" alt="coverpic">
-            <img class="profilePic" src="images/profilePhoto.jpg" alt="profilePic"> 
-            <div class="NC">
-                <p id="name">Jack Carter</p>
-                <p id="country">Ontario, CA</p>
-            </div>
-            <ul>
-                <li><a href="ProfilePage.html">About</a></li>
-                <li><a href="friends.html">Friends</a></li>
-                <li><a href="photos.html">Photos</a></li>
-            </ul>
-            <div class="stats">
-                <table>
-                    <tr>
-                        <td>Post</td>
-                        <td>Followers</td>
-                        <td>Following</td>
-                    </tr>
-                    <tr id="nums">
-                        <td>101</td>
-                        <td>1.3K</td>
-                        <td>22</td>
-                    </tr>
-                </table>
-            </div>
+      <div class="profile">
+        <img class="coverPic" src="images/coverPhoto.jpg" alt="coverpic" />
+        <img
+          class="profilePic"
+          src="images/profilePhoto.jpg"
+          alt="profilePic"
+        />
+        <div class="NC">
+          <p id="name">Jack Carter</p>
+          <p id="country">Ontario, CA</p>
         </div>
-        <br>
-        <br>
-        
-        <div class="Posts">
-            <div class="uploadPhoto">
-                <label for="inputPhoto">
-                    <p> Select Image <span>&#43;</span></p>
-                    <input type="file" name="inputPhoto" id="inputPhoto">
-                </label>
-            </div>
-            
-            <div class="eachPost">
-                <img src="images/amelia.jpg" alt="amelia">
-            </div>
-            <div class="eachPost">
-                <img src="images/olivia.jpg" alt="amelia">
-            </div>
-            <div class="eachPost">
-                <img src="images/sophia.jpg" alt="amelia">
-            </div>
-            <div class="eachPost">
-                <img src="images/isabella.jpg" alt="amelia">
-            </div>
-            <div class="eachPost">
-                <img src="images/emma.jpg" alt="amelia">
-            </div>
-            <div class="eachPost">
-                <img src="images/profilePhoto.jpg" alt="amelia">
-            </div>
+        <ul>
+          <li><a href="ProfilePage.html">About</a></li>
+          <li><a href="friends.html">Friends</a></li>
+          <li><a href="photos.html">Photos</a></li>
+        </ul>
+        <div class="stats">
+          <table>
+            <tr>
+              <td>Post</td>
+              <td>Followers</td>
+              <td>Following</td>
+            </tr>
+            <tr id="nums">
+              <td>101</td>
+              <td>1.3K</td>
+              <td>22</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <br />
+      <br />
 
+      <div class="Posts" id="images">
+        <div class="uploadPhoto">
+          <label for="inputPhoto">
+            <p>Select Image <span>&#43;</span></p>
+            <input
+              type="file"
+              name="inputPhoto"
+              id="inputPhoto"
+              onchange="encodeImageFileAsURL(this)"
+            />
+          </label>
         </div>
+
+        <!-- <div class="eachPost">
+          <img src="images/amelia.jpg" alt="amelia" />
+        </div>
+        <div class="eachPost">
+          <img src="images/olivia.jpg" alt="amelia" />
+        </div>
+        <div class="eachPost">
+          <img src="images/sophia.jpg" alt="amelia" />
+        </div>
+        <div class="eachPost">
+          <img src="images/isabella.jpg" alt="amelia" />
+        </div>
+        <div class="eachPost">
+          <img src="images/emma.jpg" alt="amelia" />
+        </div>
+        <div class="eachPost">
+          <img src="images/profilePhoto.jpg" alt="amelia" />
+        </div> -->
+      </div>
     </div>
     <script>
-        function open_close(){
-            var x = document.getElementById("link-match");
-            var y = document.getElementById("menu");
-            if (x.className === "link-match") {
-                x.className += " responsive";
-                y.innerHTML = "&#10006";
-            } else {
-                x.className = "link-match";
-                y.innerHTML = "☰";
-            }
+      function open_close() {
+        var x = document.getElementById("link-match");
+        var y = document.getElementById("menu");
+        if (x.className === "link-match") {
+          x.className += " responsive";
+          y.innerHTML = "&#10006";
+        } else {
+          x.className = "link-match";
+          y.innerHTML = "☰";
         }
+      }
     </script>
-</body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var imageContainer = document.getElementById("images");
+      current = imageContainer.innerHTML;
+
+      var getPhotos = async () => {
+        let headersList = {
+          "Content-Type": "application/json",
+        };
+
+        let body = {
+          uid: "jackcarter",
+        };
+
+        let reqOptions = {
+          url: "http://localhost:3000/getuserimages",
+          method: "POST",
+          headers: headersList,
+          data: body,
+        };
+
+        var images = await axios.request(reqOptions);
+        var content = "";
+        images = images.data;
+        images.reverse();
+        images.forEach((image) => {
+          content += `<div class="eachPost">
+          <img src=${image.image} alt="amelia" />
+        </div>`;
+        });
+        imageContainer.innerHTML = current + content;
+      };
+
+      getPhotos();
+      function encodeImageFileAsURL(element) {
+        var file = element.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+          upload(reader.result);
+          getPhotos();
+        };
+        reader.readAsDataURL(file);
+      }
+
+      var upload = async (image) => {
+        console.log("clicked");
+        console.log(image);
+        let body = {
+          uid: "jackcarter",
+          image: image,
+        };
+
+        console.log(body);
+
+        let reqOptions = {
+          url: "http://localhost:3000/addimage",
+          method: "POST",
+          data: body,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+
+        let response = await axios.request(reqOptions);
+        console.log(response.data);
+      };
+    </script>
+  </body>
 </html>
