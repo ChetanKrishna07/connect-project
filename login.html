@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h1 class="text-green text-center font-weight-bold" style="font-size: 40px">
+      Login to Connect
+    </h1>
+    <div class="container">
+      <div class="col-lg-5 m-auto d-block">
+        <form>
+          <div class="form-group">
+            <label for="name" class="font-weight-regular">Username </label>
+            <input
+              type="text"
+              name="user-name"
+              class="form-control"
+              id="uname"
+              autocomplete="off"
+            />
+            <span id="UName" class="text-danger font-weight-regular"> </span>
+          </div>
+
+          <div class="form-group">
+            <label for="name" class="font-weight-regular">Password </label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="pass"
+              autocomplete="off"
+            />
+            <span id="pass-wrong" class="text-danger font-weight-regular">
+            </span>
+          </div>
+
+          <input
+            type="button"
+            name="submit"
+            value="Submit"
+            class="btn btn-success"
+            autocomplete="off"
+            onclick="validation()"
+          />
+          &emsp;&emsp;&emsp;&emsp; Did not have an account?
+          <a href="register.html">SignUp</a>
+        </form>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+      async function login() {
+        var uid = document.getElementById("uname").value;
+        var password = document.getElementById("pass").value;
+
+        let headersList = {
+          "Content-Type": "application/json",
+        };
+
+        let body = {
+          uid: uid,
+          password: password,
+        };
+
+        let reqOptions = {
+          url: "http://localhost:3000/login",
+          method: "POST",
+          headers: headersList,
+          data: body,
+        };
+
+        var register_status = await axios.request(reqOptions);
+        console.log(register_status);
+        if (register_status.data == "Verified") {
+          window.location.href = "./home.html";
+        } else {
+          document.getElementById("pass-wrong").innerHTML =
+            register_status.data;
+        }
+      }
+
+      function validation() {
+        var user = document.getElementById("uname").value;
+        var pass = document.getElementById("pass").value;
+
+        isValid = true;
+
+        if (user == "") {
+          document.getElementById("UName").innerHTML =
+            " ** Please fill the username field";
+          isValid = false;
+        }
+        if (user.length <= 2 || user.length > 20) {
+          document.getElementById("UName").innerHTML =
+            " ** Username lenght must be between 2 and 20";
+          isValid = false;
+        }
+        if (!isNaN(user)) {
+          document.getElementById("UName").innerHTML =
+            " ** only characters are allowed";
+          isValid = false;
+        }
+
+        if (pass == "") {
+          document.getElementById("Pass").innerHTML =
+            " ** Please fill the password field";
+          isValid = false;
+        }
+        if (pass.length <= 5 || pass.length > 20) {
+          document.getElementById("Pass").innerHTML =
+            " ** Passwords lenght must be between  5 and 20";
+          isValid = false;
+        }
+
+        //   if (pass != confirmpass) {
+        //     document.getElementById("confrmpass").innerHTML =
+        //       " ** Password does not match the confirm password";
+        //     return false;
+        //   }
+
+        if (isValid) {
+          login();
+        }
+      }
+    </script>
+  </body>
+</html>

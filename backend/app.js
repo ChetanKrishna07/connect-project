@@ -143,15 +143,15 @@ app.post('/login', async(req, res) => {
     let uid = req.body.uid;
     let pass = req.body.password;
     let real_pass = await User.findOne({uid: uid})
-    real_pass = real_pass.password;
     if(real_pass != null) {
+        real_pass = real_pass.password;
         if(real_pass == pass) {
             res.send("Verified")
         } else {
-            res.send("Wrong password")
+            res.send("Incorrect password")
         }
     } else {
-        res.send("No User Found")
+        res.send("No account Found Please Register")
     }
 
 })
@@ -175,13 +175,10 @@ app.post('/register', async(req, res) => {
         other: req.body.other,
     }
 
-    console.log("1");
-
     let user = await User.findOne({uid: userObj.uid})
 
-    console.log("2");
     if(user != null) {
-        res.send("Exists")
+        res.send("Account already exits, try logging in")
     } else {
         await User.create(userObj, (err, item) => {
             if (err) {
