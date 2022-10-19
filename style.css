@@ -33,8 +33,15 @@ body {
 
 .container1{
     display:flex;
+    /* width: 85%; */
     justify-content: space-between;
-    margin:5% 5%;
+    /* margin:5% 5%; */
+    margin-top: 60px;
+    margin-left: 5%;
+    margin-right: 5%;
+    /* margin: auto;
+    position: relative;
+    top: 70px; */
     }
 .left-sidebar{
     flex-basis: 25%;     
