@@ -60,7 +60,7 @@ nav li span{
     display: none;
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 980px) {
     .menu{
         display: block;
         float: right;
