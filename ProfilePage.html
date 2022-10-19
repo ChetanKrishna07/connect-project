@@ -1,163 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile</title>
-    <link rel="stylesheet" href="Profile.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="profileData.css"> 
-    <link rel="stylesheet" href="newNav.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="Profile.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="profileData.css" />
+    <link rel="stylesheet" href="newNav.css" />
+  </head>
+  <body>
     <nav>
-        <ul id="logo-name" class="logo-name">
-            <li><span>CONNECT</span></li>
-            <img id="logo" src="images/logo.jpg" alt="logo">
-        </ul>
-        <ul class="link-match" id="link-match">
-            <li><input type="search" name="search-box-frnd" id="search-box-frnd" placeholder="Search Users"></li>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="ProfilePage.html">Profile</a></li>
-            <li><a href="messages.html">Messages</a></li>
-        </ul>
-        <ul class="menu">
-            <li><a href="javascript:void(0);" id="menu" onclick="open_close()">☰</a></li>
-        </ul>
+      <ul id="logo-name" class="logo-name">
+        <li><span>CONNECT</span></li>
+        <img id="logo" src="images/logo.jpg" alt="logo" />
+      </ul>
+      <ul class="link-match" id="link-match">
+        <li>
+          <input
+            type="search"
+            name="search-box-frnd"
+            id="search-box-frnd"
+            placeholder="Search Users"
+          />
+        </li>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="ProfilePage.html">Profile</a></li>
+        <li><a href="messages.html">Messages</a></li>
+      </ul>
+      <ul class="menu">
+        <li>
+          <a href="javascript:void(0);" id="menu" onclick="open_close()">☰</a>
+        </li>
+      </ul>
     </nav>
     <div class="mainContainer">
-        <div class="profile">
-            <img class="coverPic" src="images/coverPhoto.jpg" alt="coverpic">
-            <img class="profilePic" src="images/profilePhoto.jpg" alt="profilePic"> 
-            <div class="NC">
-                <p id="name">Jack Carter</p>
-                <p id="country">Ontario, CA</p>
-            </div>
-            <ul>
-                <li><a href="ProfilePage.html">About</a></li>
-                <li><a href="friends.html">Friends</a></li>
-                <li><a href="photos.html">Photos</a></li>
-            </ul>
-            <div class="stats">
-                <table>
-                    <tr>
-                        <td>Post</td>
-                        <td>Followers</td>
-                        <td>Following</td>
-                    </tr>
-                    <tr id="nums">
-                        <td>101</td>
-                        <td>1.3K</td>
-                        <td>22</td>
-                    </tr>
-                </table>
-            </div>
+      <div class="profile">
+        <img class="coverPic" src="images/coverPhoto.jpg" alt="coverpic" />
+        <img
+          class="profilePic"
+          src="images/profilePhoto.jpg"
+          alt="profilePic"
+        />
+        <div class="NC">
+          <p id="name">Jack Carter</p>
+          <p id="country">Ontario, CA</p>
         </div>
-        <br>
-        <div class="grid-Info">
-            <div class="personalInfo">
-                <h3>Personal Info</h3>
-                <hr>
-                <h4>About Me:</h4>
-                <p>Hi, I’m John Carter, I’m 36 and I work as a Digital Designer for the “dewwater” Agency in Ontario, Canada</p>
-                <h4>Birthday:</h4>
-                <p>December 17, 1985</p>
-                <h4>Phone Number:</h4>
-                <p>+1-989-232435234</p>
-                <h4>Blood Group:</h4>
-                <p>B+</p>
-                <h4>Gender:</h4>
-                <p>male</p>
-                <h4>Country:</h4>
-                <p>San Francisco, California, USA</p>
-                <h4>Occupation:</h4>
-                <p>UI/UX Designe</p>
-                <h4>Joined:</h4>
-                <p>December 20, 2001</p>
-                <h4>Email & Website:</h4>
-                <p>www.wpkixx.com Pitnik@yourmail.com</p>
-            </div>
-
-            <div class="generalInfo">
-                <h3>General Info</h3>
-                <hr>
-                <div class="flex-container">
-                    <div>
-                        <h4>Hobbies</h4>
-                        <p>I like to ride the bicycle, swimming, and working out. I also like reading design magazines, and searching on internet, and also binge watching a good hollywood Movies while it’s raining outside.</p>
-                    </div>
-                    <div>
-                        <h4>Education</h4>
-                        <p>Master of computer science, sixteen years degree From Oxford Uniersity, London</p>
-                    </div>
-                    <div>
-                        <h4>Other Interests</h4>
-                        <p>Swimming, Surfing, Uber Diving, Anime, Photography, Tattoos, Street Art.</p>
-                    </div>
-                    <div>
-                        <h4>Work and experience</h4>
-                        <p>Currently working in the "color hands" web development agency from the last 5 five years as Senior UI/UX Designer</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="friends">
-                <h3>Friends</h3>
-                <a href="friends.html">See All</a>
-                <hr>
-                <div class="flex-container-frnd">
-                    <div class="frnd">
-                        <img src="images/sophia.jpg" alt="profile">
-                        <p>Sophia</p>
-                        <!-- 💬 -->
-                    </div>
-                    <div class="frnd">
-                        <img src="images/amelia.jpg" alt="profile">
-                        <p>Amelia</p>
-                    </div>
-                    <div class="frnd">
-                        <img src="images/olivia.jpg" alt="profile">
-                        <p>Olivia</p>
-                    </div>
-                    <div class="frnd">
-                        <img src="images/emma.jpg" alt="profile">
-                        <p>Emma</p>
-                    </div>
-                    <div class="frnd">
-                        <img src="images/isabella.jpg" alt="profile">
-                        <p>Isabella</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="photos">
-                <h3>Photos</h3>
-                <a href="photos.html">See All</a>
-                <hr>
-                <img src="images/emma.jpg" alt="profile">
-                <img src="images/isabella.jpg" alt="profile">
-                <img src="images/amelia.jpg" alt="profile">
-                <img src="images/olivia.jpg" alt="profile">
-                <img src="images/sophia.jpg" alt="profile">
-            </div>
+        <ul>
+          <li><a href="ProfilePage.html">About</a></li>
+          <li><a href="friends.html">Friends</a></li>
+          <li><a href="photos.html">Photos</a></li>
+        </ul>
+        <div class="stats">
+          <table>
+            <tr>
+              <td>Post</td>
+              <td>Followers</td>
+              <td>Following</td>
+            </tr>
+            <tr id="nums">
+              <td>101</td>
+              <td>1.3K</td>
+              <td>22</td>
+            </tr>
+          </table>
         </div>
-        
+      </div>
+      <br />
+      <div class="grid-Info">
+        <div class="personalInfo">
+          <h3>Personal Info</h3>
+          <hr />
+          <h4>About Me:</h4>
+          <p>
+            Hi, I’m John Carter, I’m 36 and I work as a Digital Designer for the
+            “dewwater” Agency in Ontario, Canada
+          </p>
+          <h4>Birthday:</h4>
+          <p>December 17, 1985</p>
+          <h4>Phone Number:</h4>
+          <p>+1-989-232435234</p>
+          <h4>Blood Group:</h4>
+          <p>B+</p>
+          <h4>Gender:</h4>
+          <p>male</p>
+          <h4>Country:</h4>
+          <p>San Francisco, California, USA</p>
+          <h4>Occupation:</h4>
+          <p>UI/UX Designe</p>
+          <h4>Joined:</h4>
+          <p>December 20, 2001</p>
+          <h4>Email & Website:</h4>
+          <p>www.wpkixx.com Pitnik@yourmail.com</p>
+        </div>
+
+        <div class="generalInfo">
+          <h3>General Info</h3>
+          <hr />
+          <div class="flex-container">
+            <div>
+              <h4>Hobbies</h4>
+              <p>
+                I like to ride the bicycle, swimming, and working out. I also
+                like reading design magazines, and searching on internet, and
+                also binge watching a good hollywood Movies while it’s raining
+                outside.
+              </p>
+            </div>
+            <div>
+              <h4>Education</h4>
+              <p>
+                Master of computer science, sixteen years degree From Oxford
+                Uniersity, London
+              </p>
+            </div>
+            <div>
+              <h4>Other Interests</h4>
+              <p>
+                Swimming, Surfing, Uber Diving, Anime, Photography, Tattoos,
+                Street Art.
+              </p>
+            </div>
+            <div>
+              <h4>Work and experience</h4>
+              <p>
+                Currently working in the "color hands" web development agency
+                from the last 5 five years as Senior UI/UX Designer
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="friends">
+          <h3>Friends</h3>
+          <a href="friends.html">See All</a>
+          <hr />
+          <div class="flex-container-frnd">
+            <div class="frnd">
+              <img src="images/sophia.jpg" alt="profile" />
+              <p>Sophia</p>
+              <!-- 💬 -->
+            </div>
+            <div class="frnd">
+              <img src="images/amelia.jpg" alt="profile" />
+              <p>Amelia</p>
+            </div>
+            <div class="frnd">
+              <img src="images/olivia.jpg" alt="profile" />
+              <p>Olivia</p>
+            </div>
+            <div class="frnd">
+              <img src="images/emma.jpg" alt="profile" />
+              <p>Emma</p>
+            </div>
+            <div class="frnd">
+              <img src="images/isabella.jpg" alt="profile" />
+              <p>Isabella</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="photos" id="disImages">
+          <h3>Photos</h3>
+          <a href="photos.html">See All</a>
+          <hr />
+        </div>
+      </div>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        function open_close(){
-            var x = document.getElementById("link-match");
-            var y = document.getElementById("menu");
-            if (x.className === "link-match") {
-                x.className += " responsive";
-                y.innerHTML = "&#10006";
-            } else {
-                x.className = "link-match";
-                y.innerHTML = "☰";
-            }
-        }
+      var imageContainer = document.getElementById("disImages");
+      var current = imageContainer.innerHTML;
+      var getPhotos = async () => {
+        let headersList = {
+          "Content-Type": "application/json",
+        };
+
+        let body = {
+          uid: "jackcarter",
+        };
+
+        let reqOptions = {
+          url: "http://localhost:3000/getuserimages",
+          method: "POST",
+          headers: headersList,
+          data: body,
+        };
+
+        var images = await axios.request(reqOptions);
+        var content = "";
+        images = images.data;
+        images.reverse();
+        images = images.slice(0, 5);
+
+        images.forEach((image) => {
+          content += `<img src=${image.image} alt="amelia"/>`;
+        });
+        console.log(content);
+        imageContainer.innerHTML = current + content;
+      };
+      getPhotos();
     </script>
-    
-</body>
+    <script>
+      function open_close() {
+        var x = document.getElementById("link-match");
+        var y = document.getElementById("menu");
+        if (x.className === "link-match") {
+          x.className += " responsive";
+          y.innerHTML = "&#10006";
+        } else {
+          x.className = "link-match";
+          y.innerHTML = "☰";
+        }
+      }
+    </script>
+  </body>
 </html>
