@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const Post = require('./models/posts')
 const Image = require('./models/image')
+const User = require('./models/user')
 require('dotenv/config')
 
 
@@ -137,6 +138,52 @@ app.post('/deleteimage', async (req, res) => {
     }
 })
 
+app.post('/login', async(req, res) => {
+    console.log('POST request at /login');
+    let uid = req.body.uid;
+    let pass = req.body.pass;
+    let real_pass = await User.findOne({uid: uid})
+    real_pass = real_pass.password;
+    if(real_pass != null) {
+        if(real_pass == pass) {
+            res.send("Verified")
+        } else {
+            res.send("Wrong password")
+        }
+    } else {
+        res.send("No User Found")
+    }
+
+})
+
+app.post('/register', async(req, res) => {
+    console.log('POST request at /register');
+    const userObj = {
+        email: req.body.email,
+        uid: req.body.uid,
+        password: req.body.password,
+        about: req.body.about,
+        mobile: req.body.mobile,
+        birthday: req.body.birthday,
+        gender: req.body.gender,
+        blood_group: req.body.blood_group,
+        country: req.body.country,
+        occupation: req.body.occupation,
+        hobbies: req.body.hobbies,
+        education: req.body.education,
+        workExp: req.body.workExp,
+        other: req.body.other,
+    }
+
+    await User.create(userObj, (err, item) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.status(200).send("Successful")
+        }
+    })
+
+})
 
 app.listen(port, err => {
     if (err)
