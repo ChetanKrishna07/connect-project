@@ -41,12 +41,79 @@
                     <span id="confrmpass" class="text-danger font-weight-regular"></span>
                 </div>
 
-                
+                <div class="form-group">
+                    <label class="font-weight-regular">About me </label>
+                    <textarea type="textarea" maxlength="250" name="aboutme" class="form-control" id="about" autocomplete="off"></textarea>
+                    <span id="About" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular"> Mobile Number </label>
+                    <input type="text" name="mobile" class="form-control" id="mobileNumber" autocomplete="off"/>
+                    <span id="mobileno" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular"> Birthday </label>
+                    <input type="text" name="Birthday" class="form-control" id="dob" autocomplete="off"/>
+                    <span id="DOB" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular"> Gender </label>
+                    <input type="text" name="gender" class="form-control" id="gender" autocomplete="off"/>
+                    <span id="Gender" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular"> Blood Group </label>
+                    <input type="text" name="blood-group" class="form-control" id="bg" autocomplete="off"/>
+                    <span id="Bloodg" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular"> Country </label>
+                    <input type="text" name="country" class="form-control" id="country" autocomplete="off"/>
+                    <span id="Country" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular">Occupation </label>
+                    <input type="text" name="Occupation" class="form-control" id="occ" autocomplete="off"/>
+                    <span id="occp" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular">Hobbies </label>
+                    <textarea type="textarea" maxlength="250" name="hobbie" class="form-control" id="hobby" autocomplete="off"></textarea>
+                    <span id="hobbies" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular">Education </label>
+                    <textarea type="textarea" maxlength="50" name="Education" class="form-control" id="edu" autocomplete="off"></textarea>
+                    <span id="education" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular">Work and Experience </label>
+                    <textarea type="textarea" maxlength="250" name="WorkExperience" class="form-control" id="work" autocomplete="off"></textarea>
+                    <span id="Experience" class="text-danger font-weight-regular"> </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="font-weight-regular">Other Interests </label>
+                    <textarea type="textarea" maxlength="250" name="interests" class="form-control" id="interest" autocomplete="off"></textarea>
+                    <span id="Interests" class="text-danger font-weight-regular"> </span>
+                </div>
+
 
                 
                 <input type="reset" name="reset" value="Reset" class="btn btn-secondary" autocomplete="off"/>
-                <!-- <button onclick="validate()" class="btn btn-secondary"><a href="next.html" onclick="validate()" style="text-decoration: none; color: white;">Next</a></button> -->
-                <a href="next.html" class="btn btn-secondary" onclick="return validate()" style="text-decoration: none; color: white;">Next</a>
+                <input type="submit" onclick="return validate()" name="submit" value="Submit" class="btn btn-primary" autocomplete="off"/>
+<!-- 
+                <button onclick="validate()" class="btn btn-secondary">Submit</button> -->
+                <!-- <a href="next.html" class="btn btn-secondary" onclick="return validate()" style="text-decoration: none; color: white;">Next</a> -->
                 &emsp;&emsp;&emsp;Already have an account?
                 <a href="login.html">Login</a>
             </form>
@@ -59,6 +126,8 @@
             var pass = document.getElementById("pass").value;
             var confirmpass = document.getElementById("conpass").value;
             var emails = document.getElementById("emails").value;
+            var about = document.getElementById("about").value;
+            var mobileNumber = document.getElementById("mobileNumber").value;
     
     
             if (emails == "") {
@@ -107,6 +176,33 @@
     
             if (confirmpass == "") {
                 document.getElementById("confrmpass").innerHTML = " ** Please fill the confirmpassword field";
+                return false;
+            }
+
+            if (mobileNumber == "") {
+                document.getElementById("mobileno").innerHTML = " ** Please fill the Mobile Number field";
+                return false;
+            }
+            if (isNaN(mobileNumber)) {
+                document.getElementById("mobileno").innerHTML = " ** user must write digits only not characters";
+                return false;
+            }
+            if (mobileNumber.length != 10) {
+                document.getElementById("mobileno").innerHTML = " ** Mobile Number must be 10 digits only";
+                return false;
+            }
+
+            if (gender == "") {
+                document.getElementById("mobileno").innerHTML = " ** Please give the Gender";
+                return false;
+            }
+
+            if(!gender=="Male" || !gender=="Female" ||  !gender=="other"){
+                document.getElementById("Gender").innerHTML = " ** gender can be Male or Female or other";
+            }
+
+            if (country == "") {
+                document.getElementById("mobileno").innerHTML = " ** Please fill the Country field";
                 return false;
             }
     
