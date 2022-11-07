@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const Post = require('./models/posts')
 const Image = require('./models/image')
 const User = require('./models/user')
+const Conversation = require('./models/conversation')
+const e = require('express')
 require('dotenv/config')
 
 
@@ -189,6 +191,61 @@ app.post('/register', async(req, res) => {
         })
     }
 
+})
+
+app.post('/addChat', async(req, res) => {
+    console.log('POST request at /addChat');
+    let cid = req.body.cid
+    const newChat = {
+        sender: req.body.sender,
+        body: req.body.body,
+        sendDate: Date.now(),
+    }
+
+    const conv = await Conversation.findOne({_id: cid})
+    if(conv != null) {
+        const messages = conv.chats;
+        messages.push(newChat)
+    
+        await Conversation.updateOne({_id: cid}, {chats: messages}, (err, conv) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.status(200).send("Successful")
+            }
+        })
+    } else {
+        res.status(404).send('no conversation');
+    }
+})
+
+app.post('/newConvo', async(req, res) => {
+    console.log('POST request at /newConvo');
+
+    const newConvo = {
+        members: req.body.members,
+        chats: []
+    }
+
+    await Conversation.create(newConvo, (err, item) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.status(200).send("Successful")
+        }
+    })
+})
+
+app.post('/getChats', async(req, res) => {
+    console.log('POST request at /getChats');
+    
+    const cid = req.body.cid;
+    try {
+        let convo = await Conversation.findOne({_id: cid})
+        res.send(convo.chats)
+    } catch(err) {
+        res.status(404).send('no conversation');
+    }
 })
 
 app.listen(port, err => {
