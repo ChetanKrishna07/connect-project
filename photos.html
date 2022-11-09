@@ -47,6 +47,7 @@
           class="profilePic"
           src="images/profilePhoto.jpg"
           alt="profilePic"
+          id="dp"
         />
         <div class="NC">
           <p id="name">Jack Carter</p>
@@ -60,14 +61,16 @@
         <div class="stats">
           <table>
             <tr>
-              <td>Post</td>
+              <!-- <td>Post</td>
               <td>Followers</td>
-              <td>Following</td>
+              <td>Following</td> -->
+              <td>Friends</td>
             </tr>
             <tr id="nums">
-              <td>101</td>
+              <!-- <td>101</td>
               <td>1.3K</td>
-              <td>22</td>
+              <td>22</td> -->
+              <td id="friends"></td>
             </tr>
           </table>
         </div>
@@ -125,6 +128,38 @@
     <script>
       var imageContainer = document.getElementById("images");
       current = imageContainer.innerHTML;
+      const uid = sessionStorage.getItem("uname");
+
+      var getUserDatails = async () => {
+        let headersList = {
+          "Content-Type": "application/json",
+        };
+
+        let body = {
+          uid: uid,
+        };
+
+        let getOptions = {
+          url: "http://localhost:3000/getuserdetails",
+          method: "POST",
+          headers: headersList,
+          data: body,
+        };
+
+        var userDetails = await axios.request(getOptions);
+        const user = userDetails.data;
+        console.log(user);
+
+        document.getElementById("name").innerHTML = user.uid;
+        document.getElementById("country").innerHTML = user.country;
+        document.getElementById("friends").innerHTML = user.friends.length;
+        if (user.dp != null) {
+          document.getElementById("dp").src = user.dp;
+        }
+        document.getElementById("friendList").innerHTML = friendHTML;
+      };
+
+      getUserDatails();
 
       var getPhotos = async () => {
         let headersList = {
@@ -132,7 +167,7 @@
         };
 
         let body = {
-          uid: "jackcarter",
+          uid: uid,
         };
 
         let reqOptions = {
@@ -169,7 +204,7 @@
         console.log("clicked");
         console.log(image);
         let body = {
-          uid: "jackcarter",
+          uid: uid,
           image: image,
         };
 
