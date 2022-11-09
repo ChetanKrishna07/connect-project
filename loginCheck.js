@@ -5,3 +5,7 @@ if(!sessionStorage.getItem('uname')) {
 function logout() {
     sessionStorage.clear()
 }
+
+document.getElementById('logout').addEventListener('click', () => {
+    logout()
+})

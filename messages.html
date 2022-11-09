@@ -1,170 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link rel="stylesheet" href="newNav.css" />
+    <link rel="stylesheet" href="messages.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat</title>
-  <link rel="stylesheet" href="newNav.css" />
-  <link rel="stylesheet" href="messages.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-</head>
+  <body>
+    <nav>
+      <ul id="logo-name" class="logo-name">
+        <li><span>CONNECT</span></li>
+        <img id="logo" src="images/logo.jpg" alt="logo" />
+      </ul>
+      <ul class="link-match" id="link-match">
+        <li>
+          <input
+            type="search"
+            name="search-box-frnd"
+            id="search-box-frnd"
+            placeholder="Search Users"
+          />
+        </li>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="ProfilePage.html">Profile</a></li>
+        <li><a href="messages.html">Messages</a></li>
+        <li><a href="login.html" id="logout">Logout</a></li>
+      </ul>
+      <ul class="menu">
+        <li>
+          <a href="javascript:void(0);" id="menu" onclick="open_close()">☰</a>
+        </li>
+      </ul>
+    </nav>
 
-<body>
-  <nav>
-    <ul id="logo-name" class="logo-name">
-      <li><span>CONNECT</span></li>
-      <img id="logo" src="images/logo.jpg" alt="logo" />
-    </ul>
-    <ul class="link-match" id="link-match">
-      <li>
-        <input type="search" name="search-box-frnd" id="search-box-frnd" placeholder="Search Users" />
-      </li>
-      <li><a href="home.html">Home</a></li>
-      <li><a href="ProfilePage.html">Profile</a></li>
-      <li><a href="messages.html">Messages</a></li>
-      <li><a href="login.html">Logout</a></li>
-    </ul>
-    <ul class="menu">
-      <li>
-        <a href="javascript:void(0);" id="menu" onclick="open_close()">☰</a>
-      </li>
-    </ul>
-  </nav>
+    <div class="chat-container">
+      <div class="left-container">
+        <img class="dp" src="images/amelia.jpg" alt="" />
+        <br />
+        <input
+          type="text"
+          placeholder="Search Contacts..."
+          name="search_chat"
+          id="search_chat"
+        />
+        <br />
 
-  <div class="chat-container">
-    <div class="left-container">
-      <img class="dp" src="images/amelia.jpg" alt="">
-      <br> 
-      <input type="text" placeholder="Search Contacts..." name="search_chat" id="search_chat"> 
-      <br>
+        <div class="eachChat">
+          <img class="dp-chat" src="images/emma.jpg" alt="" />
+          <h4 id="name">Emma</h4>
+          <p id="time">9:52</p>
+          <p id="msg">Good Morning</p>
+        </div>
 
-      <div class="eachChat">
-        <img class="dp-chat" src="images/emma.jpg" alt="">
-        <h4 id="name">Emma</h4>
-        <p id="time">9:52</p>
-        <p id="msg">Good Morning</p>
-      </div> 
+        <div class="eachChat">
+          <img class="dp-chat" src="images/amelia.jpg" alt="" />
+          <h4 id="name">Amelia</h4>
+          <p id="time">8:43</p>
+          <p id="msg">Bye</p>
+        </div>
 
-      <div class="eachChat">
-        <img class="dp-chat" src="images/amelia.jpg" alt="">
-        <h4 id="name">Amelia</h4>
-        <p id="time">8:43</p>
-        <p id="msg">Bye</p>
-      </div> 
+        <div class="eachChat">
+          <img class="dp-chat" src="images/sophia.jpg" alt="" />
+          <h4 id="name">Sophia</h4>
+          <p id="time">4:29</p>
+          <p id="msg">nice to meet u</p>
+        </div>
 
-      <div class="eachChat">
-        <img class="dp-chat" src="images/sophia.jpg" alt="">
-        <h4 id="name">Sophia</h4>
-        <p id="time">4:29</p>
-        <p id="msg">nice to meet u</p>
-      </div> 
+        <div class="eachChat">
+          <img class="dp-chat" src="images/emma.jpg" alt="" />
+          <h4 id="name">Emma</h4>
+          <p id="time">9:52</p>
+          <p id="msg">Good Morning</p>
+        </div>
 
-      <div class="eachChat">
-        <img class="dp-chat" src="images/emma.jpg" alt="">
-        <h4 id="name">Emma</h4>
-        <p id="time">9:52</p>
-        <p id="msg">Good Morning</p>
-      </div> 
+        <div class="eachChat">
+          <img class="dp-chat" src="images/amelia.jpg" alt="" />
+          <h4 id="name">Amelia</h4>
+          <p id="time">8:43</p>
+          <p id="msg">Bye</p>
+        </div>
 
-      <div class="eachChat">
-        <img class="dp-chat" src="images/amelia.jpg" alt="">
-        <h4 id="name">Amelia</h4>
-        <p id="time">8:43</p>
-        <p id="msg">Bye</p>
-      </div> 
+        <div class="eachChat">
+          <img class="dp-chat" src="images/sophia.jpg" alt="" />
+          <h4 id="name">Sophia</h4>
+          <p id="time">4:29</p>
+          <p id="msg">nice to meet u</p>
+        </div>
 
-      <div class="eachChat">
-        <img class="dp-chat" src="images/sophia.jpg" alt="">
-        <h4 id="name">Sophia</h4>
-        <p id="time">4:29</p>
-        <p id="msg">nice to meet u</p>
+        <div class="eachChat">
+          <img class="dp-chat" src="images/emma.jpg" alt="" />
+          <h4 id="name">Emma</h4>
+          <p id="time">9:52</p>
+          <p id="msg">Good Morning</p>
+        </div>
+
+        <div class="eachChat">
+          <img class="dp-chat" src="images/amelia.jpg" alt="" />
+          <h4 id="name">Amelia</h4>
+          <p id="time">8:43</p>
+          <p id="msg">Bye</p>
+        </div>
+
+        <div class="eachChat">
+          <img class="dp-chat" src="images/sophia.jpg" alt="" />
+          <h4 id="name">Sophia</h4>
+          <p id="time">4:29</p>
+          <p id="msg">nice to meet u</p>
+        </div>
+
+        <div class="eachChat">
+          <img class="dp-chat" src="images/emma.jpg" alt="" />
+          <h4 id="name">Emma</h4>
+          <p id="time">9:52</p>
+          <p id="msg">Good Morning</p>
+        </div>
+
+        <div class="eachChat">
+          <img class="dp-chat" src="images/amelia.jpg" alt="" />
+          <h4 id="name">Amelia</h4>
+          <p id="time">8:43</p>
+          <p id="msg">Bye</p>
+        </div>
+
+        <div class="eachChat">
+          <img class="dp-chat" src="images/sophia.jpg" alt="" />
+          <h4 id="name">Sophia</h4>
+          <p id="time">4:29</p>
+          <p id="msg">nice to meet u</p>
+        </div>
       </div>
 
-      <div class="eachChat">
-        <img class="dp-chat" src="images/emma.jpg" alt="">
-        <h4 id="name">Emma</h4>
-        <p id="time">9:52</p>
-        <p id="msg">Good Morning</p>
-      </div> 
+      <div class="right-container">
+        <div class="chatName">
+          <img id="chat-img" src="images/sophia.jpg" alt="" />
+          <h4 id="chat-name">Sophia</h4>
+        </div>
 
-      <div class="eachChat">
-        <img class="dp-chat" src="images/amelia.jpg" alt="">
-        <h4 id="name">Amelia</h4>
-        <p id="time">8:43</p>
-        <p id="msg">Bye</p>
-      </div> 
+        <div class="chatting">
+          <p class="myMsg">Hi! Shyam. How are you?</p>
+          <p class="frndMsg">Hi! Ram. I am good. What about you.</p>
+          <p class="myMsg">
+            Yeah. I am also good. How was your result? I got 93.9%.
+          </p>
+          <p class="myMsg">Mine was also good. I got 99.2 %.</p>
+          <p class="frndMsg">
+            Wow! then definitely you are going to join an engineering college.
+          </p>
+          <p class="frndMsg">Yes! definitely. What about you?</p>
+          <p class="frndMsg">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolor
+            magnam molestiae deleniti minus qui, excepturi accusantium
+            recusandae culpa? Neque tempore impedit non officiis veritatis
+            maxime pariatur expedita alias ipsum!
+          </p>
+          <p class="myMsg">Hi! Shyam. How are you?</p>
+          <p class="frndMsg">Hi! Ram. I am good. What about you.</p>
+          <p class="myMsg">
+            Yeah. I am also good. How was your result? I got 93.9%.
+          </p>
+          <p class="myMsg">Mine was also good. I got 99.2 %.</p>
+          <p class="frndMsg">
+            Wow! then definitely you are going to join an engineering college.
+          </p>
+          <p class="frndMsg">Yes! definitely. What about you?</p>
+          <p class="myMsg">Hi! Shyam. How are you?</p>
+          <p class="frndMsg">Hi! Ram. I am good. What about you.</p>
+          <p class="myMsg">
+            Yeah. I am also good. How was your result? I got 93.9%.
+          </p>
+          <p class="myMsg">Mine was also good. I got 99.2 %.</p>
+          <p class="frndMsg">
+            Wow! then definitely you are going to join an engineering college.
+          </p>
+          <p class="frndMsg">Yes! definitely. What about you?</p>
+        </div>
 
-      <div class="eachChat">
-        <img class="dp-chat" src="images/sophia.jpg" alt="">
-        <h4 id="name">Sophia</h4>
-        <p id="time">4:29</p>
-        <p id="msg">nice to meet u</p>
+        <div class="chatText">
+          <input
+            type="text"
+            name="txtmsg"
+            id="txtmsg"
+            placeholder="Type a message"
+          />
+          <ion-icon name="send-outline" id="send"></ion-icon>
+        </div>
       </div>
-
-      <div class="eachChat">
-        <img class="dp-chat" src="images/emma.jpg" alt="">
-        <h4 id="name">Emma</h4>
-        <p id="time">9:52</p>
-        <p id="msg">Good Morning</p>
-      </div> 
-
-      <div class="eachChat">
-        <img class="dp-chat" src="images/amelia.jpg" alt="">
-        <h4 id="name">Amelia</h4>
-        <p id="time">8:43</p>
-        <p id="msg">Bye</p>
-      </div> 
-
-      <div class="eachChat">
-        <img class="dp-chat" src="images/sophia.jpg" alt="">
-        <h4 id="name">Sophia</h4>
-        <p id="time">4:29</p>
-        <p id="msg">nice to meet u</p>
-      </div>
-
     </div>
 
-    <div class="right-container">
-      <div class="chatName">
-        <img id="chat-img" src="images/sophia.jpg" alt="">
-        <h4 id="chat-name">Sophia</h4>
-      </div>
-
-      <div class="chatting">
-        <p class="myMsg">Hi! Shyam. How are you?</p>
-        <p class="frndMsg">Hi! Ram. I am good. What about you.</p>
-        <p class="myMsg">Yeah. I am also good. How was your result? I got 93.9%.</p>
-        <p class="myMsg">Mine was also good. I got 99.2 %.</p>
-        <p class="frndMsg">Wow! then definitely you are going to join an engineering college.</p>
-        <p class="frndMsg">Yes! definitely. What about you?</p>
-        <p class="frndMsg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolor magnam molestiae deleniti minus qui, excepturi accusantium recusandae culpa? Neque tempore impedit non officiis veritatis maxime pariatur expedita alias ipsum!</p>
-        <p class="myMsg">Hi! Shyam. How are you?</p>
-        <p class="frndMsg">Hi! Ram. I am good. What about you.</p>
-        <p class="myMsg">Yeah. I am also good. How was your result? I got 93.9%.</p>
-        <p class="myMsg">Mine was also good. I got 99.2 %.</p>
-        <p class="frndMsg">Wow! then definitely you are going to join an engineering college.</p>
-        <p class="frndMsg">Yes! definitely. What about you?</p>
-        <p class="myMsg">Hi! Shyam. How are you?</p>
-        <p class="frndMsg">Hi! Ram. I am good. What about you.</p>
-        <p class="myMsg">Yeah. I am also good. How was your result? I got 93.9%.</p>
-        <p class="myMsg">Mine was also good. I got 99.2 %.</p>
-        <p class="frndMsg">Wow! then definitely you are going to join an engineering college.</p>
-        <p class="frndMsg">Yes! definitely. What about you?</p>
-      </div>
-
-      <div class="chatText">
-        <input type="text" name="txtmsg" id="txtmsg" placeholder="Type a message">
-        <ion-icon name="send-outline" id="send"></ion-icon>
-      </div>
-    </div>
-  </div>
-
-
-
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
-
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="loginCheck.js"></script>
+  </body>
 </html>

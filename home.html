@@ -20,7 +20,6 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <script src="loginCheck.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -29,6 +28,7 @@
     <link rel="stylesheet" href="homeNav.css" />
     <link rel="stylesheet" href="style.css" />
     <title>home</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
       $(document).ready(function () {
         $.ajax({
@@ -77,7 +77,7 @@
         <li><a href="home.html">Home</a></li>
         <li><a href="ProfilePage.html">Profile</a></li>
         <li><a href="messages.html">Messages</a></li>
-        <li><a href="login.html">Logout</a></li>
+        <li><a href="login.html" id="logout">Logout</a></li>
       </ul>
       <ul class="menu">
         <li>
@@ -93,13 +93,15 @@
         <div class="left-sidebar">
           <div class="weather">
             <!-- <img src="img_home/weatherbg.webp" alt=""> -->
-            <div class="city-weather-temperature" id="city-weather-temperature">
-              22° C
-            </div>
-            <div class="city-name" id="city-name">Mumbai</div>
-            <div class="city-weather-description" id="city-weather-description">
-              cloudy
-            </div>
+            <div
+              class="city-weather-temperature"
+              id="city-weather-temperature"
+            ></div>
+            <div class="city-name" id="city-name"></div>
+            <div
+              class="city-weather-description"
+              id="city-weather-description"
+            ></div>
 
             <img
               src="http://openweathermap.org/img/w/01d.png"
@@ -113,9 +115,9 @@
         <div class="main-content">
           <div class="create-post">
             <div class="user-profile">
-              <img src="img_home\me.png" alt="" />
+              <img src="img_home\me.png" alt="" id="dp" />
               <div>
-                <p>Radhika Nathani</p>
+                <p id="name">Radhika Nathani</p>
                 <i class="fa fa-globe"></i>
                 <small>Public</small>
               </div>
@@ -219,26 +221,12 @@
         <div class="right-sidebar">
           <div class="white">
             <div class="suggestions">
-              <h4>Suggestions for you</h4>
-              <a href="" style="text-decoration: none">See all</a>
+              <h4>Friends</h4>
+              <a href="friends.html" style="text-decoration: none">See all</a>
             </div>
             <hr />
 
-            <div class="suggest">
-              <div class="suggestion_friend">
-                <div class="img_name" style="display: flex">
-                  <img src="img_home\default_profile.jpeg" alt="" />
-                  <h6>Sakshi</h6>
-                </div>
-                <a href=""><b>Follow</b></a>
-              </div>
-              <div class="suggestion_friend">
-                <div class="img_name" style="display: flex">
-                  <img src="img_home\default_profile.jpeg" alt="" />
-                  <h6>Prachi</h6>
-                </div>
-                <a href=""><b>Follow</b></a>
-              </div>
+            <div class="suggest" id="friends">
               <div class="suggestion_friend">
                 <div class="img_name" style="display: flex">
                   <img src="img_home\default_profile.jpeg" alt="" />
@@ -274,6 +262,7 @@
         </div>
       </div>
     </div>
+    <script src="loginCheck.js"></script>
     <script>
       function open_close() {
         var x = document.getElementById("link-match");
@@ -286,6 +275,61 @@
           y.innerHTML = "☰";
         }
       }
+    </script>
+    <script>
+      const uid = sessionStorage.getItem("uname");
+
+      var getUserDatails = async () => {
+        let headersList = {
+          "Content-Type": "application/json",
+        };
+
+        let body = {
+          uid: uid,
+        };
+
+        let getOptions = {
+          url: "http://localhost:3000/getuserdetails",
+          method: "POST",
+          headers: headersList,
+          data: body,
+        };
+
+        var userDetails = await axios.request(getOptions);
+        const user = userDetails.data;
+        console.log(user);
+
+        document.getElementById("name").innerHTML = user.uid;
+        if (user.dp != null) {
+          document.getElementById("dp").src = user.dp;
+        }
+
+        var friendsHTML = "";
+
+        let friends = user.friends;
+        for (friend of friends) {
+          let img = await axios.request({
+            url: "http://localhost:3000/getDp",
+            method: "POST",
+            headers: headersList,
+            data: {
+              uid: friend,
+            },
+          });
+
+          friendsHTML += `<div class="suggestion_friend">
+                <div class="img_name" style="display: flex">
+                  <img src="${img.data}" alt="" />
+                  <h6>${friend}</h6>
+                </div>
+                <a href="messages.html"><b>Message</b></a>
+              </div>`;
+        }
+
+        document.getElementById("friends").innerHTML = friendsHTML;
+      };
+
+      getUserDatails();
     </script>
   </body>
 </html>

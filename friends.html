@@ -12,7 +12,6 @@
     />
     <link rel="stylesheet" href="profileData.css" />
     <link rel="stylesheet" href="newNav.css" />
-    <script src="loginCheck.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
@@ -33,7 +32,7 @@
         <li><a href="home.html">Home</a></li>
         <li><a href="ProfilePage.html">Profile</a></li>
         <li><a href="messages.html">Messages</a></li>
-        <li><a href="login.html">Logout</a></li>
+        <li><a href="login.html" id="logout">Logout</a></li>
       </ul>
       <ul class="menu">
         <li>
@@ -181,7 +180,7 @@
         </div>
       </div>
     </div>
-
+    <script src="loginCheck.js"></script>
     <script>
       function open_close() {
         var x = document.getElementById("link-match");
