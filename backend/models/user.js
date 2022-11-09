@@ -15,6 +15,8 @@ const userSchema = new mongoose.Schema({
     education: String,
     workExp: String,
     other: String,
+    friends: [String],
+    dp: String,
     createdAt: {
         type: Date,
         immutable: true,

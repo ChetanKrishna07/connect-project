@@ -6,7 +6,6 @@ const Post = require('./models/posts')
 const Image = require('./models/image')
 const User = require('./models/user')
 const Conversation = require('./models/conversation')
-const e = require('express')
 require('dotenv/config')
 
 
@@ -158,6 +157,53 @@ app.post('/login', async(req, res) => {
 
 })
 
+app.post('/getfriends', async(req, res) => {
+    console.log('POST request at /getfriends');
+    let uid = req.body.uid
+    let user = await User.findOne({uid: uid})
+    if(user != null) {
+        res.send(user.friends)
+    } else {
+        res.status(404).send("User not found")
+    }
+})
+
+app.post('/addfriend', async(req, res) => {
+    console.log('POST request at /addfriend');
+    let uid = req.body.uid
+    let friendId = req.body.friendId
+
+    let user = await User.findOne({uid: uid})
+    let friend = await User.findOne({uid: friendId})
+
+    if(user != null) {
+        if(friend != null) {
+            let friends = user.friends
+            let friends2 = friend.friends
+            let exists = false
+            for(var i = 0; i < friends.length; i++) {
+                if(friends[i] == friendId) {
+                    exists = true
+                    break
+                }
+            }
+            if(exists) {
+                res.send("Already Friends")
+            } else {
+                friends.push(friendId)
+                friends2.push(uid)
+                await User.updateOne({uid: uid}, {friends: friends})
+                await User.updateOne({uid: friendId}, {friends: friends2})
+                res.send("Friend Added")
+            }
+        } else {
+            res.status(404).send("Friend Not Found")
+        }
+    } else {
+        res.status(404).send("User Not Found")
+    }
+})
+
 app.post('/register', async(req, res) => {
     console.log('POST request at /register');
     const userObj = {
@@ -175,6 +221,8 @@ app.post('/register', async(req, res) => {
         education: req.body.education,
         workExp: req.body.workExp,
         other: req.body.other,
+        friends: [],
+        dp: null,
     }
 
     let user = await User.findOne({uid: userObj.uid})
