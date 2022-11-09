@@ -83,6 +83,7 @@
         var register_status = await axios.request(reqOptions);
         console.log(register_status);
         if (register_status.data == "Verified") {
+          sessionStorage.setItem("uname", uid);
           window.location.href = "./home.html";
         } else {
           document.getElementById("pass-wrong").innerHTML =

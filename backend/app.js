@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const Post = require('./models/posts')
 const Image = require('./models/image')
 const User = require('./models/user')
+const Conversation = require('./models/conversation')
 require('dotenv/config')
 
 
@@ -30,6 +31,17 @@ mongoose.connect(
 )
 
 
+
+app.post('/getuserdetails', async(req, res) => {
+    console.log('POST request at /getuserdetails');
+    let uid = req.body.uid
+    const user = await User.findOne({uid: uid})
+    if(user != null) {
+        res.send(user)
+    } else {
+        res.status(404).send("User not found")
+    }
+})
 
 app.post('/getuserposts', async (req, res) => {
     console.log('POST request at /getuserposts');
@@ -156,6 +168,53 @@ app.post('/login', async(req, res) => {
 
 })
 
+app.post('/getfriends', async(req, res) => {
+    console.log('POST request at /getfriends');
+    let uid = req.body.uid
+    let user = await User.findOne({uid: uid})
+    if(user != null) {
+        res.send(user.friends)
+    } else {
+        res.status(404).send("User not found")
+    }
+})
+
+app.post('/addfriend', async(req, res) => {
+    console.log('POST request at /addfriend');
+    let uid = req.body.uid
+    let friendId = req.body.friendId
+
+    let user = await User.findOne({uid: uid})
+    let friend = await User.findOne({uid: friendId})
+
+    if(user != null) {
+        if(friend != null) {
+            let friends = user.friends
+            let friends2 = friend.friends
+            let exists = false
+            for(var i = 0; i < friends.length; i++) {
+                if(friends[i] == friendId) {
+                    exists = true
+                    break
+                }
+            }
+            if(exists) {
+                res.send("Already Friends")
+            } else {
+                friends.push(friendId)
+                friends2.push(uid)
+                await User.updateOne({uid: uid}, {friends: friends})
+                await User.updateOne({uid: friendId}, {friends: friends2})
+                res.send("Friend Added")
+            }
+        } else {
+            res.status(404).send("Friend Not Found")
+        }
+    } else {
+        res.status(404).send("User Not Found")
+    }
+})
+
 app.post('/register', async(req, res) => {
     console.log('POST request at /register');
     const userObj = {
@@ -173,6 +232,8 @@ app.post('/register', async(req, res) => {
         education: req.body.education,
         workExp: req.body.workExp,
         other: req.body.other,
+        friends: [],
+        dp: null,
     }
 
     let user = await User.findOne({uid: userObj.uid})
@@ -189,6 +250,94 @@ app.post('/register', async(req, res) => {
         })
     }
 
+})
+
+app.post('/addChat', async(req, res) => {
+    console.log('POST request at /addChat');
+    let cid = req.body.cid
+    const newChat = {
+        sender: req.body.sender,
+        body: req.body.body,
+        sendDate: Date.now(),
+    }
+
+    const conv = await Conversation.findOne({_id: cid})
+    if(conv != null) {
+        const messages = conv.chats;
+        messages.push(newChat)
+    
+        await Conversation.updateOne({_id: cid}, {chats: messages}, (err, conv) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.status(200).send("Successful")
+            }
+        })
+    } else {
+        res.status(404).send('no conversation');
+    }
+})
+
+app.post('/newConvo', async(req, res) => {
+    console.log('POST request at /newConvo');
+
+    const newConvo = {
+        members: req.body.members,
+        chats: []
+    }
+
+    await Conversation.create(newConvo, (err, item) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.status(200).send("Successful")
+        }
+    })
+})
+
+app.post('/getChats', async(req, res) => {
+    console.log('POST request at /getChats');
+    
+    const cid = req.body.cid;
+    try {
+        let convo = await Conversation.findOne({_id: cid})
+        res.send(convo.chats)
+    } catch(err) {
+        res.status(404).send('no conversation');
+    }
+})
+
+app.post('/updateDp', async(req, res) => {
+    console.log('POST request at /updateDp');
+    
+    const uid = req.body.uid
+    const dp = req.body.image
+
+    if(dp != "") {
+        const user = await User.findOne({uid: uid})
+        if(user != null) {
+            await User.updateOne({uid: uid}, {dp: dp})
+            res.send("Updated DP")
+        } else {
+            res.status(404).send("user not found")
+        }
+    } else {
+        res.send("No img")
+    }
+
+})
+
+app.post('/getDp', async(req, res) => {
+    console.log('POST request at /getDp');
+
+    const uid = req.body.uid
+    const user = await User.findOne({uid: uid})
+    if(user != null) {
+        let dp = user.dp
+        res.send(dp)
+    } else {
+        res.status(400).send("User not found")
+    }
 })
 
 app.listen(port, err => {

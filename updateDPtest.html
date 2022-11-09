@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Test</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" name="uid" id="uid" placeholder="username" required/> </br></br>
+      <input type="file" name="image" id="image" placeholder="image" onchange="encodeImageFileAsURL(this)" required/> </br></br>
+      <input type="button" value="submit" id="submit" />
+    </form>
+    <div id="dp"></div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        
+        // const getDetails = async () => {
+
+        //     let bodyContent = {
+        //     "uid": "mansi"
+        //     };
+
+        //     let reqOptions = {
+        //     url: "http://localhost:3000/getuserposts",
+        //     method: "POST",
+        //     data: bodyContent,
+        //     }
+        //     console.log("req");
+        //     let response = await axios.request(reqOptions);
+        //     console.log(response.data);
+
+        // }
+
+        var image = ""
+
+        function encodeImageFileAsURL(element) {
+          var file = element.files[0];
+          var reader = new FileReader();
+          reader.onloadend = function () {
+            image =  reader.result
+          };
+          reader.readAsDataURL(file);
+        }
+
+        document.getElementById('submit').addEventListener('click', async () => {
+            console.log("clicked");
+            console.log(image);
+            let body = {
+                "uid" : document.getElementById("uid").value,
+                "image" : image,
+            }
+
+            console.log(body);
+
+            let reqOptions = {
+              url: "http://localhost:3000/updateDp",
+              method: "POST",
+              data: body,
+              headers: { 
+                'Content-Type': 'application/json'
+               }
+            }
+
+            let response = await axios.request(reqOptions);
+            console.log(response.data)
+
+            let getOpt = {
+              url: "http://localhost:3000/getDp", 
+              method: "POST",
+              data: {
+                  "uid": document.getElementById("uid").value
+              },
+              headers: { 
+                'Content-Type': 'application/json'
+              }
+            }
+
+            let img = await axios.request(getOpt);
+            console.log(img.data);
+            
+            document.getElementById("dp").innerHTML = `<img src="${img.data}"/>`
+
+        })
+
+    </script>
+  </body>
+</html>

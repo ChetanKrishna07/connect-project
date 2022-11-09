@@ -42,11 +42,7 @@
     <div class="mainContainer">
       <div class="profile">
         <img class="coverPic" src="images/coverPhoto.jpg" alt="coverpic" />
-        <img
-          class="profilePic"
-          src="images/profilePhoto.jpg"
-          alt="profilePic"
-        />
+        <img class="profilePic" src="blankDP.jpg" alt="profilePic" id="dp" />
         <div class="NC">
           <p id="name">Jack Carter</p>
           <p id="country">Ontario, CA</p>
@@ -59,14 +55,16 @@
         <div class="stats">
           <table>
             <tr>
-              <td>Post</td>
-              <td>Followers</td>
-              <td>Following</td>
+              <!-- <td>Post</td> -->
+              <!-- <td>Followers</td> -->
+              <!-- <td>Following</td> -->
+              <td>Friends</td>
             </tr>
             <tr id="nums">
-              <td>101</td>
-              <td>1.3K</td>
-              <td>22</td>
+              <!-- <td>101</td> -->
+              <!-- <td>1.3K</td> -->
+              <!-- <td>22</td> -->
+              <td id="friends">0</td>
             </tr>
           </table>
         </div>
@@ -77,26 +75,24 @@
           <h3>Personal Info</h3>
           <hr />
           <h4>About Me:</h4>
-          <p>
+          <p id="about">
             Hi, I’m John Carter, I’m 36 and I work as a Digital Designer for the
             “dewwater” Agency in Ontario, Canada
           </p>
           <h4>Birthday:</h4>
-          <p>December 17, 1985</p>
+          <p id="birthday">December 17, 1985</p>
           <h4>Phone Number:</h4>
-          <p>+1-989-232435234</p>
+          <p id="mobile">+1-989-232435234</p>
           <h4>Blood Group:</h4>
-          <p>B+</p>
+          <p id="blood_group">B+</p>
           <h4>Gender:</h4>
-          <p>male</p>
+          <p id="gender">male</p>
           <h4>Country:</h4>
-          <p>San Francisco, California, USA</p>
+          <p id="country2">San Francisco, California, USA</p>
           <h4>Occupation:</h4>
-          <p>UI/UX Designe</p>
-          <h4>Joined:</h4>
-          <p>December 20, 2001</p>
-          <h4>Email & Website:</h4>
-          <p>www.wpkixx.com Pitnik@yourmail.com</p>
+          <p id="occupation">UI/UX Designe</p>
+          <h4>Email:</h4>
+          <p id="email">www.wpkixx.com Pitnik@yourmail.com</p>
         </div>
 
         <div class="generalInfo">
@@ -105,7 +101,7 @@
           <div class="flex-container">
             <div>
               <h4>Hobbies</h4>
-              <p>
+              <p id="hobbies">
                 I like to ride the bicycle, swimming, and working out. I also
                 like reading design magazines, and searching on internet, and
                 also binge watching a good hollywood Movies while it’s raining
@@ -114,21 +110,21 @@
             </div>
             <div>
               <h4>Education</h4>
-              <p>
+              <p id="education">
                 Master of computer science, sixteen years degree From Oxford
                 Uniersity, London
               </p>
             </div>
             <div>
               <h4>Other Interests</h4>
-              <p>
+              <p id="other">
                 Swimming, Surfing, Uber Diving, Anime, Photography, Tattoos,
                 Street Art.
               </p>
             </div>
             <div>
               <h4>Work and experience</h4>
-              <p>
+              <p id="workExp">
                 Currently working in the "color hands" web development agency
                 from the last 5 five years as Senior UI/UX Designer
               </p>
@@ -140,7 +136,7 @@
           <h3>Friends</h3>
           <a href="friends.html">See All</a>
           <hr />
-          <div class="flex-container-frnd">
+          <div class="flex-container-frnd" id="friendList">
             <div class="frnd">
               <img src="images/sophia.jpg" alt="profile" />
               <p>Sophia</p>
@@ -173,16 +169,81 @@
       </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="loginCheck.js"></script>
     <script>
       var imageContainer = document.getElementById("disImages");
       var current = imageContainer.innerHTML;
+      const uid = sessionStorage.getItem("uname");
+      var getUserDatails = async () => {
+        let headersList = {
+          "Content-Type": "application/json",
+        };
+
+        let body = {
+          uid: uid,
+        };
+
+        let getOptions = {
+          url: "http://localhost:3000/getuserdetails",
+          method: "POST",
+          headers: headersList,
+          data: body,
+        };
+
+        var userDetails = await axios.request(getOptions);
+        const user = userDetails.data;
+        console.log(user);
+
+        document.getElementById("name").innerHTML = user.uid;
+        document.getElementById("country").innerHTML = user.country;
+        document.getElementById("country2").innerHTML = user.country;
+        document.getElementById("about").innerHTML = user.about;
+        document.getElementById("birthday").innerHTML = user.birthday;
+        document.getElementById("mobile").innerHTML = user.mobile;
+        document.getElementById("blood_group").innerHTML = user.blood_group;
+        document.getElementById("gender").innerHTML = user.gender;
+        document.getElementById("occupation").innerHTML = user.occupation;
+        document.getElementById("email").innerHTML = user.email;
+        document.getElementById("hobbies").innerHTML = user.hobbies;
+        document.getElementById("education").innerHTML = user.education;
+        document.getElementById("other").innerHTML = user.other;
+        document.getElementById("workExp").innerHTML = user.workExp;
+        document.getElementById("friends").innerHTML = user.friends.length;
+        if (user.dp != null) {
+          document.getElementById("dp").src = user.dp;
+        }
+
+        let friendHTML = "";
+
+        let friends = user.friends;
+        for (friend of friends) {
+          let img = await axios.request({
+            url: "http://localhost:3000/getDp",
+            method: "POST",
+            headers: headersList,
+            data: {
+              uid: friend,
+            },
+          });
+
+          friendHTML += `<div class="frnd">
+              <img src=${img.data} alt="profile" />
+              <p>${friend}</p>
+            </div>`;
+        }
+
+        document.getElementById("friendList").innerHTML = friendHTML;
+      };
+
+      getUserDatails();
+
       var getPhotos = async () => {
         let headersList = {
           "Content-Type": "application/json",
         };
 
         let body = {
-          uid: "jackcarter",
+          uid: uid,
         };
 
         let reqOptions = {
