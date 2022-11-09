@@ -32,6 +32,10 @@ mongoose.connect(
 
 
 
+app.post('/getuserdetails', async(req, res) => {
+    console.log('POST request at /getuserdetails');
+})
+
 app.post('/getuserposts', async (req, res) => {
     console.log('POST request at /getuserposts');
     let uid = req.body.uid
@@ -293,6 +297,39 @@ app.post('/getChats', async(req, res) => {
         res.send(convo.chats)
     } catch(err) {
         res.status(404).send('no conversation');
+    }
+})
+
+app.post('/updateDp', async(req, res) => {
+    console.log('POST request at /updateDp');
+    
+    const uid = req.body.uid
+    const dp = req.body.image
+
+    if(dp != "") {
+        const user = await User.findOne({uid: uid})
+        if(user != null) {
+            await User.updateOne({uid: uid}, {dp: dp})
+            res.send("Updated DP")
+        } else {
+            res.status(404).send("user not found")
+        }
+    } else {
+        res.send("No img")
+    }
+
+})
+
+app.post('/getDp', async(req, res) => {
+    console.log('POST request at /getDp');
+
+    const uid = req.body.uid
+    const user = await User.findOne({uid: uid})
+    if(user != null) {
+        let dp = user.dp
+        res.send(dp)
+    } else {
+        res.status(400).send("User not found")
     }
 })
 
