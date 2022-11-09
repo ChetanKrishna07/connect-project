@@ -34,6 +34,13 @@ mongoose.connect(
 
 app.post('/getuserdetails', async(req, res) => {
     console.log('POST request at /getuserdetails');
+    let uid = req.body.uid
+    const user = await User.findOne({uid: uid})
+    if(user != null) {
+        res.send(user)
+    } else {
+        res.status(404).send("User not found")
+    }
 })
 
 app.post('/getuserposts', async (req, res) => {
