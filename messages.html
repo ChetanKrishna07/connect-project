@@ -143,7 +143,7 @@
           <h4 id="chat-name">Sophia</h4> -->
         </div>
 
-        <div class="chatting">
+        <div class="chatting" id="chatting">
           <!-- <p class="myMsg">Hi! Shyam. How are you?</p>
           <p class="frndMsg">Hi! Ram. I am good. What about you.</p>
           <p class="myMsg">
@@ -180,17 +180,16 @@
             Wow! then definitely you are going to join an engineering college.
           </p>
           <p class="frndMsg">Yes! definitely. What about you?</p>
-        </div>
-
-        <div class="chatText">
-          <input
-            type="text"
-            name="txtmsg"
-            id="txtmsg"
-            placeholder="Type a message"
-          />
-          <ion-icon name="send-outline" id="send"></ion-icon>
         </div> -->
+      </div>
+      <div class="chatText hidden" id="sendMsg">
+        <input
+          type="text"
+          name="txtmsg"
+          id="txtmsg"
+          placeholder="Type a message"
+        />
+        <ion-icon name="send-outline" id="send"></ion-icon>
       </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -206,6 +205,10 @@
 
     <script>
       const uid = sessionStorage.getItem("uname");
+
+      setInterval(() => {
+        document.getElementById(sessionStorage.getItem('current')).click()
+      }, 2000)
 
       var openChat = (e) => {
         console.log(e);
@@ -280,7 +283,7 @@
           let lastChat = convo.chats[convo.chats.length - 1].body;
 
           convoHTML += `<div class="eachChat" id=${convo._id} name=${friend}>
-          <img class="dp-chat" src="${img.data}" alt="" />
+          <img class="dp-chat" src="${img.data}" alt="" id=${convo._id}/>
           <h4 id="name">${friend}</h4>
           <p id="time">8:43</p>
           <p id="msg">${lastChat}</p>
@@ -289,10 +292,31 @@
 
         document.getElementById("convoList").innerHTML += convoHTML;
 
+        document.getElementById('send').addEventListener('click', async ()=> {
+              let body = document.getElementById('txtmsg').value
+              let convo = sessionStorage.getItem('current')
+              // console.log(convo);
+              // console.log(body);
+              let res = await axios.request({
+                url: "http://localhost:3000/addChat",
+                method: "POST",
+                headers: headersList,
+                data: {
+                  cid: convo,
+                  sender: uid,
+                  body: body
+                },
+              })
+              console.log(res.data);
+              document.getElementById(convo).click()
+        })
+
         for(convo of convos) {
 
           document.getElementById(convo._id).addEventListener('click', async (e) => {
+            document.getElementById('sendMsg').classList.remove('hidden')
             let id = e.target.id
+            sessionStorage.setItem('current', id)
             let c = await axios.request({
               url: "http://localhost:3000/getChats",
               method: "POST",
@@ -317,6 +341,16 @@
               document.getElementById('chatName').innerHTML = `
               <img id="chat-img" src=${img.data} alt="" />
              <h4 id="chat-name">${friend}</h4>`
+              var chatHTML = ''
+              console.log(uid);
+             for(chat of chats.chats) {
+              if(chat.sender == uid) {
+                chatHTML += `<p class="myMsg">${chat.body}</p>`
+              } else {
+                chatHTML += `<p class="frndMsg">${chat.body}</p>`
+              }
+             }
+             document.getElementById('chatting').innerHTML = chatHTML
           })
         }
 
