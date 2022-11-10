@@ -41,8 +41,8 @@
     </nav>
 
     <div class="chat-container">
-      <div class="left-container">
-        <img class="dp" src="images/amelia.jpg" alt="" />
+      <div class="left-container" id="convoList">
+        <img class="dp" src="images/amelia.jpg" alt="" id="dp" />
         <br />
         <input
           type="text"
@@ -52,7 +52,7 @@
         />
         <br />
 
-        <div class="eachChat">
+        <!-- <div class="eachChat">
           <img class="dp-chat" src="images/emma.jpg" alt="" />
           <h4 id="name">Emma</h4>
           <p id="time">9:52</p>
@@ -134,17 +134,17 @@
           <h4 id="name">Sophia</h4>
           <p id="time">4:29</p>
           <p id="msg">nice to meet u</p>
-        </div>
+        </div> -->
       </div>
 
       <div class="right-container">
-        <div class="chatName">
-          <img id="chat-img" src="images/sophia.jpg" alt="" />
-          <h4 id="chat-name">Sophia</h4>
+        <div class="chatName" id="chatName">
+          <!-- <img id="chat-img" src="images/sophia.jpg" alt="" />
+          <h4 id="chat-name">Sophia</h4> -->
         </div>
 
         <div class="chatting">
-          <p class="myMsg">Hi! Shyam. How are you?</p>
+          <!-- <p class="myMsg">Hi! Shyam. How are you?</p>
           <p class="frndMsg">Hi! Ram. I am good. What about you.</p>
           <p class="myMsg">
             Yeah. I am also good. How was your result? I got 93.9%.
@@ -190,10 +190,10 @@
             placeholder="Type a message"
           />
           <ion-icon name="send-outline" id="send"></ion-icon>
-        </div>
+        </div> -->
       </div>
     </div>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
@@ -203,5 +203,143 @@
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
     <script src="loginCheck.js"></script>
+
+    <script>
+      const uid = sessionStorage.getItem("uname");
+
+      var openChat = (e) => {
+        console.log(e);
+      }
+      var getUserDatails = async () => {
+        let headersList = {
+          "Content-Type": "application/json",
+        };
+
+        let body = {
+          uid: uid,
+        };
+
+        let getOptions = {
+          url: "http://localhost:3000/getuserdetails",
+          method: "POST",
+          headers: headersList,
+          data: body,
+        };
+
+        var userDetails = await axios.request(getOptions);
+        const user = userDetails.data;
+        console.log(user);
+
+        // document.getElementById("name").innerHTML = user.uid;
+        // document.getElementById("country").innerHTML = user.country;
+        // document.getElementById("country2").innerHTML = user.country;
+        // document.getElementById("about").innerHTML = user.about;
+        // document.getElementById("birthday").innerHTML = user.birthday;
+        // document.getElementById("mobile").innerHTML = user.mobile;
+        // document.getElementById("blood_group").innerHTML = user.blood_group;
+        // document.getElementById("gender").innerHTML = user.gender;
+        // document.getElementById("occupation").innerHTML = user.occupation;
+        // document.getElementById("email").innerHTML = user.email;
+        // document.getElementById("hobbies").innerHTML = user.hobbies;
+        // document.getElementById("education").innerHTML = user.education;
+        // document.getElementById("other").innerHTML = user.other;
+        // document.getElementById("workExp").innerHTML = user.workExp;
+        // document.getElementById("friends").innerHTML = user.friends.length;
+
+        if (user.dp != null) {
+          document.getElementById("dp").src = user.dp;
+        }
+
+        let convoHTML = "";
+
+        let convos = await axios.request({
+          url: "http://localhost:3000/getConvos",
+          method: "POST",
+          headers: headersList,
+          data: {
+            uid: uid,
+          },
+        });
+
+        convos = convos.data;
+
+        for (var convo of convos) {
+          var members = convo.members;
+          // console.log(uid);
+          var friend = members.filter((f) => f != uid)[0];
+          console.log(friend);
+          let img = await axios.request({
+            url: "http://localhost:3000/getDp",
+            method: "POST",
+            headers: headersList,
+            data: {
+              uid: friend,
+            },
+          });
+
+          let lastChat = convo.chats[convo.chats.length - 1].body;
+
+          convoHTML += `<div class="eachChat" id=${convo._id} name=${friend}>
+          <img class="dp-chat" src="${img.data}" alt="" />
+          <h4 id="name">${friend}</h4>
+          <p id="time">8:43</p>
+          <p id="msg">${lastChat}</p>
+        </div>`;
+        }
+
+        document.getElementById("convoList").innerHTML += convoHTML;
+
+        for(convo of convos) {
+
+          document.getElementById(convo._id).addEventListener('click', async (e) => {
+            let id = e.target.id
+            let c = await axios.request({
+              url: "http://localhost:3000/getChats",
+              method: "POST",
+              headers: headersList,
+              data: {
+                cid: id,
+              },
+            })
+            let chats = c.data
+            var members = chats.members;
+          // console.log(uid);
+            var friend = members.filter((f) => f != uid)[0];
+            console.log(friend);
+            let img = await axios.request({
+              url: "http://localhost:3000/getDp",
+              method: "POST",
+              headers: headersList,
+              data: {
+                uid: friend,
+              },
+            });
+              document.getElementById('chatName').innerHTML = `
+              <img id="chat-img" src=${img.data} alt="" />
+             <h4 id="chat-name">${friend}</h4>`
+          })
+        }
+
+        // for (friend of friends) {
+        //   let img = await axios.request({
+        //     url: "http://localhost:3000/getDp",
+        //     method: "POST",
+        //     headers: headersList,
+        //     data: {
+        //       uid: friend,
+        //     },
+        //   });
+
+        //   friendHTML += `<div class="frnd">
+        //       <img src=${img.data} alt="profile" />
+        //       <p>${friend}</p>
+        //     </div>`;
+        // }
+
+        // document.getElementById("friendList").innerHTML = friendHTML;
+      };
+
+      getUserDatails();
+    </script>
   </body>
 </html>

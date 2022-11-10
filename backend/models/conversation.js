@@ -10,6 +10,10 @@ const conversationSchema = new mongoose.Schema({
             immutable: true,
         }
     }],
+    lastUpdate: {
+        type: Date,
+        default: () => Date.now()
+    }
 })
 
 module.exports = new mongoose.model('Conversation', conversationSchema)

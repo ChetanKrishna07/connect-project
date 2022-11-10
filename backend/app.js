@@ -266,13 +266,9 @@ app.post('/addChat', async(req, res) => {
         const messages = conv.chats;
         messages.push(newChat)
     
-        await Conversation.updateOne({_id: cid}, {chats: messages}, (err, conv) => {
-            if (err) {
-                console.log(err);
-            } else {
-                res.status(200).send("Successful")
-            }
-        })
+        await Conversation.updateOne({_id: cid}, {chats: messages, lastUpdate: Date.now()})
+
+        res.send("Successful")
     } else {
         res.status(404).send('no conversation');
     }
@@ -301,7 +297,20 @@ app.post('/getChats', async(req, res) => {
     const cid = req.body.cid;
     try {
         let convo = await Conversation.findOne({_id: cid})
-        res.send(convo.chats)
+        res.send(convo)
+    } catch(err) {
+        res.status(404).send('no conversation');
+    }
+})
+
+app.post('/getConvos', async(req, res) => {
+    console.log('POST request at /getUserChats');
+
+    const uid = req.body.uid;
+
+    try {
+        let convos = await Conversation.find({members: uid})
+        res.send(convos)
     } catch(err) {
         res.status(404).send('no conversation');
     }

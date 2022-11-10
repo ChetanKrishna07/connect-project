@@ -1,158 +1,159 @@
-body{
-    background-color: rgb(236, 241, 245);
-    font-family: 'Poppins', sans-serif;
+body {
+  background-color: rgb(236, 241, 245);
+  font-family: "Poppins", sans-serif;
 }
 
-.chat-container{
-    width: 85%;
-    height: 90vh;
-    margin:auto;
-    position: relative;
-    top: 70px;
-    background-color: white;
-    display: flex;
-    margin-bottom: 20px;
+.chat-container {
+  width: 85%;
+  height: 90vh;
+  margin: auto;
+  position: relative;
+  top: 70px;
+  background-color: white;
+  display: flex;
+  margin-bottom: 20px;
 }
 
-.left-container{
-    position: relative;
-    flex: 30%;
-    background-color: #cddaff;
-    /* background-color: #D9E3FF; */
-    overflow-y: scroll;
+.left-container {
+  position: relative;
+  flex: 30%;
+  background-color: #cddaff;
+  /* background-color: #D9E3FF; */
+  overflow-y: scroll;
 }
 
-.right-container{
-    position: relative;
-    flex: 70%;
-    background-color: #e0e5f2;
+.right-container {
+  position: relative;
+  flex: 70%;
+  background-color: #e0e5f2;
 }
 
-.dp, .dp-chat{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 10px 0 10px 10px;
+.dp,
+.dp-chat {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px 0 10px 10px;
 }
 
-.dp-chat{
-    position: relative;
-    top: 10px;
-    margin-top: 0;
+.dp-chat {
+  position: relative;
+  top: 10px;
+  margin-top: 0;
 }
 
-
-
-.left-container input{
-    margin-left: 10px;
-    border-radius: 5px;
-    border: none;
-    height: 25px;
-    padding: 5px;
-    width: 85%;
+.left-container input {
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  height: 25px;
+  padding: 5px;
+  width: 85%;
 }
 
-.eachChat{
-    border-bottom: 2px solid white;
+.eachChat {
+  border-bottom: 2px solid white;
+  cursor: pointer;
 }
 
-.dp-chat{
-    display: inline;
+.dp-chat {
+  display: inline;
 }
 
-.eachChat h4{
-    display: inline;
-    position: relative;
-    top: -30px;
-    left: 5px;
-    font-size: small;
+.eachChat h4 {
+  display: inline;
+  position: relative;
+  top: -30px;
+  left: 5px;
+  font-size: small;
 }
 
-#time{
-    display: inline;
-    position: relative;
-    top: -28px;
-    left: 200px;
-    font-size: small;
+#time {
+  display: inline;
+  position: relative;
+  top: -28px;
+  left: 200px;
+  font-size: small;
 }
 
-#msg{
-    display: inline;
-    position: relative;
-    top: -5px;
-    left: -73px;
-    color: #181818;
-    font-size: small;
+#msg {
+  display: inline;
+  position: relative;
+  top: -5px;
+  left: -73px;
+  color: #181818;
+  font-size: small;
 }
 
-.chatName{
-    /* background-color: #D9E3FF; */
-    background-color: #cddaff;
-    width: 90%;
-    margin: auto;
-    margin-top: 10px;
-    border-radius: 10px;
-    position: sticky;
-    top: 0px;
-    z-index: 1;
+.chatName {
+  /* background-color: #D9E3FF; */
+  background-color: #cddaff;
+  width: 90%;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
 }
 
-#chat-img{
-    margin: 7px 20px 0 15px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: inline;
+#chat-img {
+  margin: 7px 20px 0 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline;
 }
 
-#chat-name{
-    font-size: small;
-    display: inline;
-    position: relative;
-    top: -17px;
+#chat-name {
+  font-size: small;
+  display: inline;
+  position: relative;
+  top: -17px;
 }
 
-.chatting{
-    width: 85%;
-    height: 550px;
-    margin: auto;
-    position: relative;
-    overflow-y: scroll;
+.chatting {
+  width: 85%;
+  height: 550px;
+  margin: auto;
+  position: relative;
+  overflow-y: scroll;
 }
 
-.myMsg, .frndMsg{
-    font-size: small;
-    padding: 5px;
-    margin: 3px;
-    max-width: 80%;
+.myMsg,
+.frndMsg {
+  font-size: small;
+  padding: 5px;
+  margin: 3px;
+  max-width: 80%;
 }
 
-.myMsg{
-    clear: both;
-    float: right;
-    background-color: #618AFF;
-    border-bottom-left-radius: 10px;
+.myMsg {
+  clear: both;
+  float: right;
+  background-color: #618aff;
+  border-bottom-left-radius: 10px;
 }
 
-.frndMsg{
-    clear: both;
-    float: left;
-    background-color: #B1C6FD;
-    border-bottom-right-radius: 10px;
+.frndMsg {
+  clear: both;
+  float: left;
+  background-color: #b1c6fd;
+  border-bottom-right-radius: 10px;
 }
 
-.chatText input{
-    width: 70%;
-    border: none;
-    background-color: white;
-    padding: 10px;
-    margin: 10px 10px 10px 50px;
-    border-radius: 10px;
+.chatText input {
+  width: 70%;
+  border: none;
+  background-color: white;
+  padding: 10px;
+  margin: 10px 10px 10px 50px;
+  border-radius: 10px;
 }
 
-ion-icon{
-    position: relative;
-    top: 9px;
-    font-size: x-large;
-    cursor: pointer;
+ion-icon {
+  position: relative;
+  top: 9px;
+  font-size: x-large;
+  cursor: pointer;
 }
